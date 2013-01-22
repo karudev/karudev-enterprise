@@ -1,0 +1,66 @@
+_home:
+    pattern:  /
+    defaults: { _controller: KarudevSiteBundle:Default:index }
+
+_contact:
+    pattern:  /contact
+    defaults: { _controller: KarudevSiteBundle:Default:contact }
+
+_profil:
+    pattern:  /profil
+    defaults: { _controller: KarudevSiteBundle:Default:profil }
+ 
+_disponibilite:
+    pattern:  /disponibilite
+    defaults: { _controller: KarudevSiteBundle:Default:disponibilite }
+    
+_apps_enterprise_login:
+    pattern:  /enterprise/login
+    defaults: { _controller: KarudevAppsBundle:Default:login }
+
+_apps_enterprise_logout:
+    pattern:  /enterprise/logout
+    defaults: { _controller: KarudevAppsBundle:Default:logout }  
+     
+_apps_enterprise_login_check:
+    pattern:  /enterprise/logincheck
+     
+_apps_enterprise_contrat:
+    pattern:  /enterprise/contrat
+    defaults: { _controller: KarudevAppsBundle:Contrat:create }
+    
+_apps_enterprise_organisation:
+    pattern:  /enterprise/organisation
+    defaults: { _controller: KarudevAppsBundle:Organisation:create }
+
+_apps_enterprise_contact:
+    pattern:  /enterprise/contact
+    defaults: { _controller: KarudevAppsBundle:Contact:create }    
+
+_apps_enterprise_contact_show:
+    pattern:  /enterprise/contact/show
+    defaults: { _controller: KarudevAppsBundle:Contact:show }    
+                       
+_demo_secured:
+    resource: "@AcmeDemoBundle/Controller/SecuredController.php"
+    type:     annotation
+
+_demo:
+    resource: "@AcmeDemoBundle/Controller/DemoController.php"
+    type:     annotation
+    prefix:   /demo
+
+_wdt:
+    resource: "@WebProfilerBundle/Resources/config/routing/wdt.xml"
+    prefix:   /_wdt
+
+_profiler:
+    resource: "@WebProfilerBundle/Resources/config/routing/profiler.xml"
+    prefix:   /_profiler
+
+_configurator:
+    resource: "@SensioDistributionBundle/Resources/config/routing/webconfigurator.xml"
+    prefix:   /_configurator
+
+_main:
+    resource: routing.yml

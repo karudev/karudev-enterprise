@@ -1,0 +1,33 @@
+{% extends "KarudevAppsBundle::login.html.twig" %}
+{% block body %}
+	<div class="container">
+	<section style="width : 500px;" >
+	<div> 
+      <form name="login" method="post" action="{{ path('_apps_enterprise_login_check') }}" class="form-signin">
+     
+	     	<figure class="logo"></figure>
+	        <h3>Accédez à votre compte</h3>
+	        <input type="text" placeholder="Identifiant" class="input-block-level" id="username" name="_username" value="{{ last_username }}" required="required">
+	        <input  id="password"  name="_password" type="password" placeholder="Mot de passe" class="input-block-level">
+	        <label class="checkbox">
+	          <input type="checkbox" value="1"> Se souvenir de moi
+	        </label>
+	        <button type="submit" class="btn btn-large btn">Se connecter</button>
+      
+     
+      </form>
+    </div>
+ 	<div  style="margin-top:20px" class="form-signin">
+     <center> <h3>Vous êtes freelance ou entrepreneur ?</h3></center>
+      <button type="submit" class="btn btn-large btn">Créer votre compte maintenant !</button>
+     </div>
+     </section>
+     <section>
+     <article >
+     <p><h2>Qu'est ce que Karudev Enterprise ?</h2></p>
+    <p>Karudev Enterprise est un projet CRM Open Source destiné au Freelance et entrepreneur.</p>
+    <p>La plateforme est composé de modules permettants de bien gérer son activité en tant que chef d'entreprise.</p> 
+    </article>
+    </section>
+    </div>
+{% endblock %}

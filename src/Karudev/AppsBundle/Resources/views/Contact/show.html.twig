@@ -1,0 +1,24 @@
+    <table class="table table-striped">
+    	<thead>
+	    	<tr>
+	    		<th>ID</th>
+	    		<th>Nom</th>
+	    		<th>Fonction</th>
+	    		<th>Portable pro</th>
+	    		<th>Email pro</th>
+	    		<th></th>
+	    	</tr>
+	    </thead>
+	    <tbody>
+	    {% for key,contact in contacts %}
+	    	<tr>
+	    		<td>#{{contact.id}}</td>
+	    		<td>{{contact.civilite}} {{contact.prenom}} {{contact.nom}}</td>
+	    		<td>{{contact.fonction}}</td>
+	    		<td>{{contact.portablePro}}</td>
+	    		<td>{{contact.emailPro}}</td>
+	    		<td><a href="" >+ détails</a> | <a href="" >Supprimer</a></td>
+	    	</tr>
+	    {% endfor %}	
+	    </tbody>
+    </table>

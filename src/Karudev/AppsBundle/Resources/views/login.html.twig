@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta content="2 days" name="revisit-after">
+	<meta content="Développements Web sur mesure, 
+	Karudev propose de prendre en charge vos projets web spécifiques, de faibles ou grandes complexités.
+	Freelance Php, Dolyveen Renault développe des appliquations et sites en php,html,jquery et utilise divers frameworks ( SYMFONY2, ZEND )
+	afin de gagner en temps, stabilité et sécurité" name="description">
+	<meta content="Freelance Php, Développeur web, Php, Symfony2, Zend Framework, Développement Web, Création de site web en guadeloupe, webmaster île de france , developpeur web île de france , freelance , webmaster indépendant , création site internet guadeloupe, web Guadeloupe, référencement guadeloupe, creation site internet guadeloupe, site web guadeloupe, création site internet guadeloupe, internet antilles, internet caraibes, informatique guadeloupe, site internet martinique, referencement martinique, referencement antilles., Guadeloupe, site internet guadeloupe, site web guadeloupe, creation site internet guadeloupe, guadeloupe site internet, internet antilles, referencement guadeloupe, referencement site guadeloupe, referencement site internet guadeloupe, site web guadeloupe , prestashop" name="keywords">
+	<meta content="Karudev : Freelance Php, Développeur d'appliquations web Symfony2 / Zend Framework Paris et Dom-Tom" name="Generator">
+	<meta content="Renault Dolyveen" name="author">
+	<meta content="index, follow" name="robots">
+   	<title>{% block title %}Karudev Enterprise : Appliquations CRM en ligne pour les entrepreneurs et Freelances{% endblock %}</title>
+   	<link rel="shortcut icon" href="{{ asset('favicon.png') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+   
+   
+    <!-- Le styles -->
+     <link href="{{ asset('bundles/karudevsite/css/base.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/karudevsite/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/karudevsite/css/main.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/karudevapps/css/smoothness/jquery-ui-1.9.2.custom.css') }}" type="text/css" rel="stylesheet" />
+ 	<link href="{{ asset('bundles/karudevapps/css/default.css') }}" type="text/css" rel="stylesheet" />
+ 	<link href="{{ asset('bundles/karudevapps/css/sign.css') }}" type="text/css" rel="stylesheet" />
+ 	
+     {% block stylesheets %}{% endblock %}
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+      
+    </style>
+    <link href="{{ asset('bundles/karudevsite/css/bootstrap-responsive.css') }}" rel="stylesheet">
+    
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+  
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+         {% block nav %}
+        <a class="brand" href="#">Karudev Enterprise</a>
+	 	<div class="nav-collapse collapse">
+          
+          </div><!--/.nav-collapse -->
+     	{% endblock %}
+          
+        </div>
+      </div>
+    </div>
+	
+    <div class="container">
+ 	
+	  <section class="retour">
+	  {% if error.message is defined %}
+	  {{error.message}}
+	  {% endif %}
+	  </section>
+      <section class="corps">
+	 {% block body %}
+	
+
+	
+	
+     {% endblock %}
+     </section>
+     
+
+    </div> <!-- /container -->
+	{% block footer %}
+<footer>
+<p>©2009 - 2013 <a href="http://karudev.fr">Karudev.fr</a> , Tous droits réservés | <a href="{{ path('_contact') }}">Contact</a> </p>
+
+<p>Karudev Enterprise :  Appliquations CRM en ligne pour les entrepreneurs et Freelances</p>
+</footer>
+     {% endblock %}
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+ 
+ 		 <script src="{{ asset('bundles/karudevsite/js/jquery-1.7.2.min.js') }}" ></script>
+     	 <script src="{{ asset('bundles/karudevapps/js/jquery-ui-1.9.2.custom.js') }}"></script>
+
+        {% block javascripts %}
+         {% endblock %}
+  </body>
+</html>

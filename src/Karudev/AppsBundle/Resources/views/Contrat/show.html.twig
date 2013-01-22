@@ -1,0 +1,28 @@
+    <table class="table table-striped">
+    	<thead>
+	    	<tr>
+	    		<th>ID</th>
+	    		<th>Type de contact</th>
+	    		<th>Client</th>
+	    		<th>Date de début</th>
+	    		<th>Durée</th>
+	    		<th>Horaires</th>
+	    		<th>Prix</th>
+	    		<th></th>
+	    	</tr>
+	    </thead>
+	    <tbody>
+	    {% for key,contrat in contrats %}
+	    	<tr>
+	    		<td>#{{contrat.id}}</td>
+	    		<td>{{contrat.typeContrat}}</td>
+	    		<td>{{contrat.idOrganisation.nom}}</td>
+	    		<td>{{contrat.dateDebut}}</td>
+	    		<td>{{contrat.duree}}</td>
+	    		<td>{{contrat.horaires}}</td>
+	    		<td>{{contrat.prixHt}} {{contrat.unitePrix}}</td>
+	    		<td><a href="" >+ détails</a> | <a href="" >Supprimer</a></td>
+	    	</tr>
+	    {% endfor %}	
+	    </tbody>
+    </table>

@@ -1,0 +1,152 @@
+body
+{
+  background: url("../images/textures/bg.gif") repeat-x scroll left top #FFFFFF;
+    color: #333333;
+    font-family: "Trebuchet MS",Verdana,Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    /*margin: 0;
+    padding: 0;
+    width: 100%;*/
+}
+
+h1
+{
+	color :#F79321;
+	font-size: 2.2em;
+}
+h2
+{
+	color :#F79321;
+	font-size: 1.6em;
+}
+h3
+{
+	color :#565656;
+	text-decoration : underline;
+	font-size: 1.1em;
+}
+h4
+{
+	color :#565656;
+	text-decoration : underline;
+	font-size: 1.1em;
+	margin: 0;
+}
+header
+{
+color : #FFF;
+}
+header article.texte
+{
+max-width : 500px;
+}
+header article
+{
+	float:left;
+}
+header article.texture
+{
+	background: url("../images/textures/featureImg.png") no-repeat;
+	height: 350px;
+	width: 540px;
+	margin-top: -33px;
+}
+figure.logo
+{
+	 background: url("../images/logos/logo_off.png") no-repeat;
+	 height: 30px;
+	 width: 230px;
+	 margin: 0;
+	 margin-bottom: 30px;
+}
+section.corps
+{
+	clear: both;
+	/*padding-top: 50px;*/
+}
+section.corps article,section.corps section
+{
+	float:left;
+	max-width: 500px;
+	padding : 10px;
+	
+}
+section.corps ul.liste li {
+  font-size: 100%;
+  display: list-item;
+  list-style-image: url(../images/textures/puce.png);
+}
+.nav .espace_client
+{
+	 background: url("../images/menu/button_EspClient.png") no-repeat scroll left top transparent;
+    color: #666666;
+   height: 16px;
+    margin: 10px;
+    padding: 2px 26px !important;
+    width: 90px;
+}
+.photo
+ {-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.4); 
+ }
+footer
+{
+	margin-top : 50px;
+	background-color: #333333;
+    background-image: url("../images/textures/bg.png");
+    background-repeat: repeat-x;
+    bottom: -50px;
+    clear: both;
+    color: #FFFFFF;
+    float: left;
+    font-size: 12px;
+    height: 100px;
+    margin-bottom: 0;
+    padding-top: 10px;
+    text-align: center;
+    width: 100%;
+}
+header a:link,header a:link,footer a:link {
+    color: #FF9900;
+    text-decoration: none;
+}
+header a:visited,footer a:visited {
+    color: #FF9900;
+    text-decoration: none;
+}
+header a:hover,footer a:hover {
+    color: #D8C22C;
+    text-decoration: none;
+}
+section.round
+{
+	clear: both;
+}
+ul.round
+{
+	height : 500px;
+	padding-top: 100px;
+}
+ul.twitter li
+{
+	list-style-type: none;
+	margin-bottom: 10px;
+}
+ul.twitter li a:link {
+    color: #B26003;
+    text-decoration: none;
+}
+ul.twitter li a:visited {
+    color: #FF9900;
+    text-decoration: none;
+}
+ul.twitter li a:hover {
+    color: #D8C22C;
+    text-decoration: none;
+}
+section.retour
+{
+	padding:5px;
+}
