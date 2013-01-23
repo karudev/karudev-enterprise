@@ -19,13 +19,13 @@ class OrganisationController extends Controller
     	$request = $this->get('request');
     	$organisation = new Organisation();
     	$form = $this->createForm(new OrganisationType(),$organisation);
-    	
+    	$user = $this->get('security.context')->getToken()->getUser();
     	if($request->getMethod() == 'POST')
     	{
     		$form->bindRequest($request);
     		$em = $this->getDoctrine()->getManager();
-    		$organisation->setIdOwner(1);
-    		$organisation->setIdModifier(1);
+    		$organisation->setIdOwner($user->getId());
+    		$organisation->setIdModifier($user->getId());
     		$organisation->setDateCreation(time());
     		$organisation->setDateLastModified(time());
     		$em->persist($organisation);
