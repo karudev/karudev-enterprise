@@ -19,7 +19,10 @@
 	    		<td>{{organisation.tel}}</td>
 	    		<td>{{organisation.email}}</td>
                         <td>{{organisation.siteWeb}}</td>
-	    		<td><a href="" >+ détails</a> | <a href="" >Supprimer</a></td>
+	    		<td>
+                            <img title="Voir"  style="cursor:pointer" src="{{ asset('bundles/karudevapps/images/divers/show.png') }}" />
+                            <img title="Supprimer"  style="cursor:pointer" src="{{ asset('bundles/karudevapps/images/divers/delete.png') }}" />
+                        </td>
 	    	</tr>
 	    {% endfor %}	
 	    </tbody>
