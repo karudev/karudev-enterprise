@@ -23,9 +23,12 @@
     <link href="{{ asset('bundles/karudevsite/css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('bundles/karudevsite/css/main.css') }}" type="text/css" rel="stylesheet" />
     <link href="{{ asset('bundles/karudevapps/css/smoothness/jquery-ui-1.9.2.custom.css') }}" type="text/css" rel="stylesheet" />
- 	<link href="{{ asset('bundles/karudevapps/css/default.css') }}" type="text/css" rel="stylesheet" />
+ <link href="{{ asset('bundles/karudevapps/css/default.css') }}" type="text/css" rel="stylesheet" />
  	
      {% block stylesheets %}{% endblock %}
+   <script src="{{ asset('bundles/karudevsite/js/jquery-1.7.2.min.js') }}" ></script>
+   <script src="{{ asset('bundles/karudevapps/js/jquery-ui-1.9.2.custom.js') }}"></script>
+   <script src="{{ asset('bundles/karudevapps/js/karudev-plugin.js') }}"></script>
     <style>
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -105,8 +108,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
  
-         <script src="{{ asset('bundles/karudevsite/js/jquery-1.7.2.min.js') }}" ></script>
-     	 <script src="{{ asset('bundles/karudevapps/js/jquery-ui-1.9.2.custom.js') }}"></script>
+        
          <script src="{{ asset('bundles/karudevsite/js/bootstrap.js') }}"></script>
 
         {% block javascripts %}

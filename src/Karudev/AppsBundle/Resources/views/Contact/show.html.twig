@@ -1,27 +1,65 @@
-    <table class="table table-striped">
-    	<thead>
-	    	<tr>
-	    		<th>ID</th>
-	    		<th>Nom</th>
-	    		<th>Fonction</th>
-	    		<th>Portable pro</th>
-	    		<th>Email pro</th>
-	    		<th></th>
-	    	</tr>
-	    </thead>
-	    <tbody>
-	    {% for key,contact in contacts %}
-	    	<tr>
-	    		<td>#{{contact.id}}</td>
-	    		<td>{{contact.civilite}} {{contact.prenom}} {{contact.nom}}</td>
-	    		<td>{{contact.fonction}}</td>
-	    		<td>{{contact.portablePro}}</td>
-	    		<td>{{contact.emailPro}}</td>
-	    		<td>
-                            <img title="Voir"  style="cursor:pointer" src="{{ asset('bundles/karudevapps/images/divers/show.png') }}" />
-                            <img title="Supprimer"  style="cursor:pointer" src="{{ asset('bundles/karudevapps/images/divers/delete.png') }}" />
-                        </td>
-	    	</tr>
-	    {% endfor %}	
-	    </tbody>
-    </table>
+<section class="show">
+   <h3>Fiche contact de {{contact.civilite}} {{contact.prenom}} {{contact.nom}}</h3>
+<table >
+    <tr>
+        <td>Civilité : </td>
+        <td><strong>{{contact.civilite}}</strong></td>
+    </tr>
+    <tr>
+        <td>Nom : </td>
+        <td><strong>{{contact.nom}}</td>
+        <td>Prénom : </td>
+        <td><strong>{{contact.prenom}}</td>
+    </tr>
+    <tr>
+        <td>Fonction : </td>
+        <td><strong>{{contact.fonction}}</td>
+        <td>Service : </td>
+        <td><strong>{{contact.service}}</td>
+    </tr>
+    <tr>
+        <td>Tel Pro: </td>
+        <td><strong>{{contact.telPro}}</td>
+        <td>Portable perso: </td>
+        <td><strong>{{contact.portablePerso}}</td>
+    </tr>
+    <tr>
+        <td>Email pro : </td>
+        <td><strong>{{contact.emailPro}}</td>
+        <td>Email perso : </td>
+        <td><strong>{{contact.emailPerso}}</td>
+    </tr>
+    <tr>
+        <td>Fax : </td>
+        <td><strong>{{contact.fax}}</td>
+    </tr>
+    <tr>
+        <td>Adresse : </td>
+        <td colspan="3">
+            <address>
+                <strong>
+                     <p>{{contact.adresseLigne1}}</p>
+                     <p>{{contact.adresseLigne2}}</p>
+                     <p>{{contact.adresseLigne3}}</p>
+                     <p>{{contact.cp}} {{contact.ville}}</p>
+                     <p>{{contact.region}} {{contact.pays}}</p>
+                </strong>
+            </address>
+        </td>
+    
+        
+    </tr>
+    <tr>
+        <td>Site web : </td>
+        <td><strong>{{contact.sitePerso}}</strong></td>
+    </tr>
+    <tr>
+        
+        <td style="height:100px;" >
+            <button class="btn btn-warning" type="submit">Modifier</button>
+        </td>
+    </tr>
+</table>
+</section>
+
+

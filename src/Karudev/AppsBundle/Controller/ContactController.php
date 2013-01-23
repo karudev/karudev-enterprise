@@ -38,10 +38,23 @@ class ContactController extends Controller
      * 
      * @Template()
      */
-    public function showAction()
+    public function showallAction()
     {
     	$user = $this->get('security.context')->getToken()->getUser();
     	$contacts = $this->getDoctrine()->getRepository('KarudevAppsBundle:Contact')->findBy(array('idOwner'=>$user->getId()));
         return array( 'contacts' => $contacts);
+    }
+    
+     /**
+     * 
+     * @Template()
+     */
+    public function showAction(Contact $contact)
+    {
+        return array('contact'=>$contact);
+        /*$form =  $this->createForm(new ContactType(),$contact) ;      
+    	return array('form'=>$form->createView());
+         
+         */
     }
 }
