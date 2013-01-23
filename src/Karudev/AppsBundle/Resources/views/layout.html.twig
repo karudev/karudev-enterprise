@@ -66,8 +66,9 @@
               <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">Compte de <b>{{ app.user.idContact.prenom }} {{ app.user.idContact.nom }}</b> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="{{ path('_apps_enterprise_logout') }}">Se déconnecter</a></li>
-                   <li><a href="{{ path('_home') }}">Aller à karudev.fr</a></li>
+                   <li><a href="#"><i class="icon-user"></i> Votre profil</a></li>
+                   <li><a href="{{ path('_apps_enterprise_logout') }}"><i class="icon-off"></i> Se déconnecter</a></li>
+                   <li><a href="{{ path('_home') }}"><i class="icon-home"></i> Aller à karudev.fr</a></li>
                 
                 </ul>
               </li>
