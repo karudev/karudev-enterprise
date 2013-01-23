@@ -25,10 +25,13 @@ class ContratController extends Controller
     		$form->bindRequest($request);
     		$em = $this->getDoctrine()->getManager();
     		$contrat->setIdFreelance($user->getId());
-    		//\Doctrine\Common\Util\Debug::dump($contrat,2);die();
+    		$contrat->setIdOwner($user->getId());
+    		$contrat->setIdModified($user->getId());
+    		$contrat->setDateCreated(time());
+    		$contrat->setDateLastModified(time());
     		$em->persist($contrat);
     		$em->flush();
-                $this->redirect($this->generateUrl('apps_enterprise_contrat'));
+                $this->redirect($this->generateUrl('_apps_enterprise_contrat'));
     	}
     	
     	

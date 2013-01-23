@@ -125,11 +125,39 @@ class Contrat
     private $unite_prix;
     
      /**
-     * @var datetime
+     * @var integer
      *
      * @ORM\Column(name="date_debut", type="bigint", nullable=true)
      */
     private $date_debut;
+    
+     /**
+     * @var integer
+     *
+     * @ORM\Column(name="date_created", type="bigint", nullable=false)
+     */
+    private $date_created;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="date_last_modified", type="bigint", nullable=false)
+     */
+    private $date_last_modified;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_owner", type="integer", nullable=false)
+     */
+    private $id_owner;
+    
+     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_modified", type="integer", nullable=false)
+     */
+    private $id_modified;
 
 	public function __construct()
 	{
@@ -500,5 +528,100 @@ class Contrat
     	else
     	return "";
         return $this->date_debut;
+    }
+
+   
+   
+
+    /**
+     * Set date_created
+     *
+     * @param integer $dateCreated
+     * @return Contrat
+     */
+    public function setDateCreated($dateCreated)
+    {
+        $this->date_created = $dateCreated;
+    
+        return $this;
+    }
+
+    /**
+     * Get date_created
+     *
+     * @return integer 
+     */
+    public function getDateCreated()
+    {
+        return $this->date_created;
+    }
+
+    /**
+     * Set date_last_modified
+     *
+     * @param integer $dateLastModified
+     * @return Contrat
+     */
+    public function setDateLastModified($dateLastModified)
+    {
+        $this->date_last_modified = $dateLastModified;
+    
+        return $this;
+    }
+
+    /**
+     * Get date_last_modified
+     *
+     * @return integer 
+     */
+    public function getDateLastModified()
+    {
+        return $this->date_last_modified;
+    }
+
+    /**
+     * Set id_owner
+     *
+     * @param integer $idOwner
+     * @return Contrat
+     */
+    public function setIdOwner($idOwner)
+    {
+        $this->id_owner = $idOwner;
+    
+        return $this;
+    }
+
+    /**
+     * Get id_owner
+     *
+     * @return integer 
+     */
+    public function getIdOwner()
+    {
+        return $this->id_owner;
+    }
+
+    /**
+     * Set id_modified
+     *
+     * @param integer $idModified
+     * @return Contrat
+     */
+    public function setIdModified($idModified)
+    {
+        $this->id_modified = $idModified;
+    
+        return $this;
+    }
+
+    /**
+     * Get id_modified
+     *
+     * @return integer 
+     */
+    public function getIdModified()
+    {
+        return $this->id_modified;
     }
 }

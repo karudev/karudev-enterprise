@@ -53,7 +53,8 @@ class ContratType extends AbstractType {
             'choices' => array('', '8h à 12h - 13h à 16h' => '8h à 12h - 13h à 16h', '9h à 13h - 14h à 17h' => '9h à 13h - 14h à 17h')));
 
         $builder->add('periodiciteReunions', 'choice', array(
-            'choices' => array('',
+            'choices' => array(
+                ''=>'',
                 '1 fois par semaine' => '1 fois par semaine',
                 '2 fois par semaine' => '2 fois par semaine',
                 '3 fois par semaine' => '3 fois par semaine',
