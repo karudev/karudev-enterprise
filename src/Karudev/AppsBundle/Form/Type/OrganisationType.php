@@ -16,17 +16,17 @@ class OrganisationType extends AbstractType
    	
   // 	$builder->add('moyens_fournis', 'textarea', array('required'=>false));
    	$builder->add('nom', 'text');
-   	$builder->add('adresseLigne1', 'text');
+   	$builder->add('adresseLigne1', 'text',array('required'=>false));
    	$builder->add('adresseLigne2', 'text',array('required'=>false));
    	$builder->add('adresseLigne3', 'text',array('required'=>false));
-   	$builder->add('tel', 'text');
-   	$builder->add('email', 'email');
-   	$builder->add('fax', 'text');
-   	$builder->add('cp', 'text');
-   	$builder->add('ville', 'text');
-   	$builder->add('region', 'text');
-   	$builder->add('pays', 'text');
-   	$builder->add('siteWeb', 'text');
+   	$builder->add('tel', 'text',array('required'=>false));
+   	$builder->add('email', 'email',array('required'=>false));
+   	$builder->add('fax', 'text',array('required'=>false));
+   	$builder->add('cp', 'text',array('required'=>false));
+   	$builder->add('ville', 'text',array('required'=>false));
+   	$builder->add('region', 'text',array('required'=>false));
+   	$builder->add('pays', 'text',array('required'=>false));
+   	$builder->add('siteWeb', 'text',array('required'=>false));
   
 
     }

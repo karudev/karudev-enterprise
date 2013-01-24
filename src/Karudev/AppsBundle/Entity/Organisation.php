@@ -71,7 +71,7 @@ class Organisation
     /**
      * @var string $adresseLigne1
      *
-     * @ORM\Column(name="adresse_ligne_1", type="string", length=128, nullable=false)
+     * @ORM\Column(name="adresse_ligne_1", type="string", length=128, nullable=true)
      */
     private $adresseLigne1;
 
@@ -120,14 +120,14 @@ class Organisation
     /**
      * @var string $tel
      *
-     * @ORM\Column(name="tel", type="string", length=64, nullable=false)
+     * @ORM\Column(name="tel", type="string", length=64, nullable=true)
      */
     private $tel;
 
     /**
      * @var string $fax
      *
-     * @ORM\Column(name="fax", type="string", length=64, nullable=false)
+     * @ORM\Column(name="fax", type="string", length=64, nullable=true)
      */
     private $fax;
 
