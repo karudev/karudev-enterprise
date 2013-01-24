@@ -28,6 +28,9 @@ class OrganisationType extends AbstractType
    	$builder->add('region', 'text',array('required'=>false));
    	$builder->add('pays', 'text',array('required'=>false));
    	$builder->add('siteWeb', 'text',array('required'=>false));
+        $builder->add('siret', 'text',array('required'=>false));
+        $builder->add('capital', 'text',array('required'=>false));
+        $builder->add('statutJuridique', 'text',array('required'=>false));
   
 
     }

@@ -18,10 +18,11 @@
 	    		<td>{{contrat.typeContrat}}</td>
 	    		<td>{{contrat.idOrganisation.nom}}</td>
 	    		<td>{{contrat.dateDebut}}</td>
-	    		<td>{{contrat.duree}}</td>
+	    		<td>{{contrat.duree}} jours</td>
 	    		<td>{{contrat.horaires}}</td>
 	    		<td>{{contrat.prixHt}} {{contrat.unitePrix}}</td>
 	    		<td>
+                            <img class="download" id="{{contrat.id}}" title="Télécharger le contrat au format word"  style="cursor:pointer" src="{{ asset('bundles/karudevapps/images/divers/word.png') }}" />
                             <img title="Voir"  style="cursor:pointer" src="{{ asset('bundles/karudevapps/images/divers/show.png') }}" />
                             <img title="Supprimer"  style="cursor:pointer" src="{{ asset('bundles/karudevapps/images/divers/delete.png') }}" />
                         </td>
@@ -29,3 +30,14 @@
 	    {% endfor %}	
 	    </tbody>
     </table>
+
+<script>
+// EDITION
+$(".download").click(function() {
+	
+	window.open("./contrat/download/"+$(this).attr('id')+"",'',"menubar=no, status=no, scrollbars=no, menubar=no, width=0, height=0")
+	
+	return false;
+	
+	});
+</script>

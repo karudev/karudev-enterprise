@@ -47,9 +47,9 @@ class Contrat
   
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="duree", type="string", length=128)
+     * @ORM\Column(name="duree", type="integer")
      */
     private $duree;
 

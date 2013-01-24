@@ -67,7 +67,7 @@ class ContratType extends AbstractType {
         $builder->add('lieu', 'choice', array(
             'choices' => array('', 'Locaux du client' => 'Locaux du client', 'Télétravail' => 'Télétravail', 'Locaux du client et Télétravail' => 'Locaux du client et Télétravail')));
 
-        $builder->add('duree', 'choice', array(
+       /* $builder->add('duree', 'choice', array(
             'choices' => array(
                 'Indéterminée' => 'Indéterminée',
                 '1 jour' => '1 jour',
@@ -77,8 +77,8 @@ class ContratType extends AbstractType {
                 '1 mois' => '1 mois',
                 '3 mois' => '3 mois',
                 '6 mois' => '6 mois',
-                '1 an' => '1 an')));
-
+                '1 an' => '1 an')));*/
+        $builder->add('duree', 'text',array('required' => false));
         $builder->add('moyensFournis', 'textarea', array('required' => false));
         $builder->add('prixHt', 'text');
 

@@ -144,6 +144,27 @@ class Organisation
      * @ORM\Column(name="site_web", type="string", length=64, nullable=false)
      */
     private $siteWeb;
+    
+     /**
+     * @var string $siret
+     *
+     * @ORM\Column(name="siret", type="string", length=128, nullable=true)
+     */
+    private $siret;
+    
+     /**
+     * @var string $capital
+     *
+     * @ORM\Column(name="capital", type="integer", nullable=true)
+     */
+    private $capital;
+    
+    /**
+     * @var string $statut_juridique
+     *
+     * @ORM\Column(name="statut_juridique",  type="string", length=64, nullable=true)
+     */
+    private $statut_juridique;
 
     /**
      * @var string $idSecteurActivite
@@ -609,5 +630,74 @@ class Organisation
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set siret
+     *
+     * @param string $siret
+     * @return Organisation
+     */
+    public function setSiret($siret)
+    {
+        $this->siret = $siret;
+    
+        return $this;
+    }
+
+    /**
+     * Get siret
+     *
+     * @return string 
+     */
+    public function getSiret()
+    {
+        return $this->siret;
+    }
+
+    /**
+     * Set capital
+     *
+     * @param integer $capital
+     * @return Organisation
+     */
+    public function setCapital($capital)
+    {
+        $this->capital = $capital;
+    
+        return $this;
+    }
+
+    /**
+     * Get capital
+     *
+     * @return integer 
+     */
+    public function getCapital()
+    {
+        return $this->capital;
+    }
+
+    /**
+     * Set statut_juridique
+     *
+     * @param string $statutJuridique
+     * @return Organisation
+     */
+    public function setStatutJuridique($statutJuridique)
+    {
+        $this->statut_juridique = $statutJuridique;
+    
+        return $this;
+    }
+
+    /**
+     * Get statut_juridique
+     *
+     * @return string 
+     */
+    public function getStatutJuridique()
+    {
+        return $this->statut_juridique;
     }
 }

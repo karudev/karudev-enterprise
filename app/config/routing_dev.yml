@@ -29,6 +29,10 @@ _apps_enterprise_contrat:
     pattern:  /enterprise/contrat
     defaults: { _controller: KarudevAppsBundle:Contrat:create }
     
+_apps_enterprise_contrat_download:
+    pattern:  /enterprise/contrat/download/{id}
+    defaults: { _controller: KarudevAppsBundle:Contrat:download }
+    
 _apps_enterprise_organisation:
     pattern:  /enterprise/organisation
     defaults: { _controller: KarudevAppsBundle:Organisation:create }
