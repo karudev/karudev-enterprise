@@ -151,6 +151,13 @@ class Organisation
      * @ORM\Column(name="id_secteur_activite", type="string", length=64, nullable=true)
      */
     private $idSecteurActivite;
+    
+     /**
+     * @var string $description
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
 
 	public function __construct()
 	{
@@ -579,5 +586,28 @@ class Organisation
     public function getIdSecteurActivite()
     {
         return $this->idSecteurActivite;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Organisation
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

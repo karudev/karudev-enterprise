@@ -16,6 +16,7 @@ class OrganisationType extends AbstractType
    	
   // 	$builder->add('moyens_fournis', 'textarea', array('required'=>false));
    	$builder->add('nom', 'text');
+        $builder->add('description', 'textarea',array('required'=>false));
    	$builder->add('adresseLigne1', 'text',array('required'=>false));
    	$builder->add('adresseLigne2', 'text',array('required'=>false));
    	$builder->add('adresseLigne3', 'text',array('required'=>false));
