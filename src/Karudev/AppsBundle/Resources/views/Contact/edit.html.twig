@@ -1,0 +1,86 @@
+
+<section>
+    <form name="contact_edit" action="./contact/edit/0"  >   
+        <h3>Fiche contact de {{contact.civilite}} {{contact.prenom}} {{contact.nom}}</h3>
+        <table>
+            <tr>
+                <td>Civilité : </td>
+                <td><input type="hidden" name="contact[id]"  value="{{contact.id}}" /> {{ form_widget(form.civilite)}}</td>
+            </tr>
+            <tr>
+                <td>Nom : </td>
+                <td>{{ form_widget(form.nom)}}</td>
+                <td>Prénom : </td>
+                <td>{{ form_widget(form.prenom)}}</td>
+            </tr>
+            <tr>
+                <td>Fonction : </td>
+                <td>{{ form_widget(form.fonction)}}</td>
+                <td>Service : </td>
+                <td>{{ form_widget(form.service)}}</td>
+            </tr>
+            <tr>
+                <td>Tel Pro: </td>
+                <td>{{ form_widget(form.telPro)}}</td>
+                <td>Portable perso: </td>
+                <td>{{ form_widget(form.portablePerso)}}</td>
+            </tr>
+            <tr>
+                <td>Email pro : </td>
+                <td>{{ form_widget(form.emailPro)}}</td>
+                <td>Email perso : </td>
+                <td>{{ form_widget(form.emailPerso)}}</td>
+            </tr>
+            <tr>
+                <td>Fax : </td>
+                <td>{{ form_widget(form.fax)}}</td>
+            </tr>
+            <tr>
+                <td>Adresse : </td>
+                <td colspan="3">{{ form_widget(form.adresseLigne1,{ 'attr': {'class': 'input-xxlarge'} })}}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="3">{{ form_widget(form.adresseLigne2,{ 'attr': {'class': 'input-xxlarge'} })}}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="3">{{ form_widget(form.adresseLigne3,{ 'attr': {'class': 'input-xxlarge'} })}}</td>
+            </tr>
+
+            <tr>
+                <td>Cp : </td>
+                <td>{{ form_widget(form.cp)}}</td>
+                <td>Ville : </td>
+                <td>{{ form_widget(form.ville)}}</td>
+            </tr>
+            <tr>
+                <td>Région : </td>
+                <td>{{ form_widget(form.region)}}</td>
+                <td>Pays : </td>
+                <td>{{ form_widget(form.pays)}}</td>
+            </tr>
+            <tr>
+                <td>Site web : </td>
+                <td>{{ form_widget(form.sitePerso) }}</td>
+            </tr>
+            <tr style="height:20px;">
+                <td>
+                    <button class="btn btn-success" type="submit">Enregister</button>
+                </td>
+                <td></td>
+                <td></td>
+                <td style="text-align: right" >
+
+                </td>
+
+            </tr>
+        </table>
+    </form>
+</section>
+
+<script>
+    $('form[name="contact_edit"]').submitForm('#section-{{contact.id}}','Contact','contact');
+    </script>
+
+

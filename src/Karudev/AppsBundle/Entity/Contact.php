@@ -3,6 +3,7 @@
 namespace Karudev\AppsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Contact
  *
@@ -18,6 +19,7 @@ class Contact
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      * @ORM\OneToMany(targetEntity="Contrat", mappedBy="Contact")
+     * @ORM\OneToMany(targetEntity="Liencontactorganisation", mappedBy="id_contact")
      */
     private $id;
 
@@ -214,6 +216,10 @@ class Contact
     private $sitePerso;
 
    
+    public function __construct()
+{
+    $this->id = new ArrayCollection();
+}
 
     /**
      * Get id

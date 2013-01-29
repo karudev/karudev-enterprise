@@ -31,9 +31,10 @@ class Contrat
     private $type_contrat;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="id_freelance", type="integer")
+	 * @ORM\ManyToOne(targetEntity="Compte", inversedBy="Contrat")
+	 * @ORM\JoinColumn(name="id_freelance", referencedColumnName="id_compte")
+     *
      */
     private $id_freelance;
 
@@ -197,29 +198,7 @@ class Contrat
         return $this->type_contrat;
     }
 
-    /**
-     * Set id_freelance
-     *
-     * @param integer $idFreelance
-     * @return Contrat
-     */
-    public function setIdFreelance($idFreelance)
-    {
-        $this->id_freelance = $idFreelance;
-    
-        return $this;
-    }
-
-    /**
-     * Get id_freelance
-     *
-     * @return integer 
-     */
-    public function getIdFreelance()
-    {
-        return $this->id_freelance;
-    }
-
+   
    
 
     /**
@@ -623,5 +602,30 @@ class Contrat
     public function getIdModified()
     {
         return $this->id_modified;
+    }
+
+    
+
+    /**
+     * Set id_freelance
+     *
+     * @param \Karudev\AppsBundle\Entity\Compte $idFreelance
+     * @return Contrat
+     */
+    public function setIdFreelance(\Karudev\AppsBundle\Entity\Compte $idFreelance = null)
+    {
+        $this->id_freelance = $idFreelance;
+    
+        return $this;
+    }
+
+    /**
+     * Get id_freelance
+     *
+     * @return \Karudev\AppsBundle\Entity\Compte 
+     */
+    public function getIdFreelance()
+    {
+        return $this->id_freelance;
     }
 }

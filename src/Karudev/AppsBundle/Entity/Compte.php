@@ -21,6 +21,7 @@ class Compte implements UserInterface
      * @ORM\Column(name="id_compte", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\OneToMany(targetEntity="Contrat", mappedBy="Compte")
      */
     private $id;
     

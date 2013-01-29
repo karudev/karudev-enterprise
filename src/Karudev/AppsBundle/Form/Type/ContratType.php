@@ -40,8 +40,10 @@ class ContratType extends AbstractType {
             'label' => 'nom',
             'required' => true,
             'empty_value' => '',
-            'query_builder' => function(EntityRepository $er) {
+            'query_builder' => function(EntityRepository $er) use ($user) {
                 return $er->createQueryBuilder('o')
+                        ->where('o.idOwner = :idOwner')
+                        ->setParameter('idOwner', $user->getId())
                                 ->orderBy('o.nom', 'ASC');
             },
         ));

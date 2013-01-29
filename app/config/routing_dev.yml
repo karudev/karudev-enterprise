@@ -48,7 +48,15 @@ _apps_enterprise_contact_show_all:
 _apps_enterprise_contact_show:
     pattern:  /enterprise/contact/show/{id}
     defaults: { _controller: KarudevAppsBundle:Contact:show } 
-    
+
+_apps_enterprise_contact_edit:
+    pattern:  /enterprise/contact/edit/{id}
+    defaults: { _controller: KarudevAppsBundle:Contact:edit } 
+
+_apps_enterprise_contact_liercontactorganisation:
+    pattern:  /enterprise/contact/liercontactorganisation/{id_contact}
+    defaults: { _controller: KarudevAppsBundle:Contact:liercontactorganisation } 
+
 _demo_secured:
     resource: "@AcmeDemoBundle/Controller/SecuredController.php"
     type:     annotation

@@ -21,5 +21,76 @@
             });
 	  };
 
+$.fn.loadHtml = function(div,method,rel) {
+	
+        var thisBis = this;
+        var href;
+        
+        if(rel)
+         href = $(thisBis).attr('rel');
+        else
+         href = $(thisBis).attr('href');
+      
+	  
+	 
+	  $(this).click(function(event)
+			  {
+		  event.preventDefault();
+		 
+			 // $(div).html('<div style="margin:90px" ><img src="'+domaine+'/bundles/lea/images/divers/load.gif" /></div>');
+			  $.ajax({
+			  		url: href,
+			  		dataType: "html",
+			  		type : method,
+			  		success: function( html ) {
+			  		$(div).html(html);
+			  		}
+			  		});
+
+			  });
+	//  return false;
+  };
+  
+    $.fn.submitForm = function(div,titre_retour,suffixe,noreload) {
+        
+		var thisBis = this;
+	  $(this).submit(function()
+			  {
+
+			  var form = $(thisBis).serializeArray();
+			
+			 /* if(noreload == undefined)
+			  $(div).html('<div style="margin:90px" ><img src="'+domaine+'/bundles/lea/images/divers/load.gif" /></div>');
+			  */
+			  $.ajax({
+			  		url: $(thisBis).attr('action'),
+			  		dataType: "json",
+			  		type : "POST",
+			  		data : form,
+			  		success: function( data ) {
+				  
+				  if(noreload == undefined)
+				  $(div).html('');
+			  		
+                                       
+                                        
+			  		if(suffixe)
+			  			{
+			  		$('a#'+suffixe+'_show').trigger('click');
+			  		
+			  			}
+			  		
+			  		/*$.pnotify({
+			  						title: titre_retour,
+			  						text: data,
+			  						type: 'success',
+			  						styling: 'jqueryui'
+			  					});*/
+			  		}
+			  		});
+			  return false;
+
+			  });
+  };
  
 })( jQuery );

@@ -1,4 +1,4 @@
-<section class="show">
+<section id="section-{{contact.id}}" class="show">
     <h3>Fiche contact de {{contact.civilite}} {{contact.prenom}} {{contact.nom}}</h3>
     <table >
         <tr>
@@ -57,7 +57,7 @@
         </tr>
         <tr style="height:20px;">
             <td>
-                <button class="btn btn-warning" type="submit">Modifier</button>
+                <a id="modifier-{{contact.id}}" href="./contact/edit/{{contact.id}}" class="btn btn-warning" type="submit">Modifier</a>
             </td>
             <td></td>
             <td></td>
@@ -68,5 +68,22 @@
         </tr>
     </table>
 </section>
-
-
+<section class="show" >
+    <h3>Ses organisations</h3>
+    <div style="padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid #CCC" >
+        {% for key,organisation in organisations %}
+            {{organisation.idOrganisation.nom}} <img title="Supprimer"  style="cursor:pointer" src="{{ asset('bundles/karudevapps/images/divers/delete.png') }}" />
+        {% endfor %}
+    </div>
+    <div>
+        <form name="contact_liercontactorganisation-{{contact.id}}" action="./contact/liercontactorganisation/{{contact.id}}">
+        <div> {{ form_widget(form.idOrganisation) }}</div>
+        <div> <button class="btn btn-success" type="submit">Lier</button></div>
+        </form>
+    </div>
+    
+</section>
+<script>
+    $('#modifier-{{contact.id}}').loadHtml('#section-{{contact.id}}','GET');
+    $('form[name="contact_liercontactorganisation-{{contact.id}}"]').submitForm();
+</script>

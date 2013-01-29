@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * Lea\PrestaBundle\Entity\Organisation
  *
  * @ORM\Table(name="Organisation")
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Karudev\AppsBundle\Entity\OrganisationRepository")
  */
 class Organisation
 {
@@ -20,6 +20,7 @@ class Organisation
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      * @ORM\OneToMany(targetEntity="Contrat", mappedBy="Organisation")
+     * @ORM\OneToMany(targetEntity="Liencontactorganisation", mappedBy="Organisation")
      */
     private $idOrganisation;
 
@@ -92,28 +93,28 @@ class Organisation
     /**
      * @var string $cp
      *
-     * @ORM\Column(name="cp", type="string", length=64, nullable=false)
+     * @ORM\Column(name="cp", type="string", length=64, nullable=true)
      */
     private $cp;
 
     /**
      * @var string $ville
      *
-     * @ORM\Column(name="ville", type="string", length=64, nullable=false)
+     * @ORM\Column(name="ville", type="string", length=64, nullable=true)
      */
     private $ville;
 
     /**
      * @var string $region
      *
-     * @ORM\Column(name="region", type="string", length=64, nullable=false)
+     * @ORM\Column(name="region", type="string", length=64, nullable=true)
      */
     private $region;
 
     /**
      * @var string $pays
      *
-     * @ORM\Column(name="pays", type="string", length=64, nullable=false)
+     * @ORM\Column(name="pays", type="string", length=64, nullable=true)
      */
     private $pays;
 
@@ -134,14 +135,14 @@ class Organisation
     /**
      * @var string $email
      *
-     * @ORM\Column(name="email", type="string", length=64, nullable=false)
+     * @ORM\Column(name="email", type="string", length=64, nullable=true)
      */
     private $email;
 
     /**
      * @var string $siteWeb
      *
-     * @ORM\Column(name="site_web", type="string", length=64, nullable=false)
+     * @ORM\Column(name="site_web", type="string", length=64, nullable=true)
      */
     private $siteWeb;
     

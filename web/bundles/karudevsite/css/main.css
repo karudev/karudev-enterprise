@@ -150,3 +150,16 @@ section.retour
 {
 	padding:5px;
 }
+section.cv{
+    -webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	box-shadow: -1px 1px 5px 1px rgba(0, 0, 0, 0.1); 
+        width : 100%;
+        min-height : 800px;
+        max-width: 950px !important;
+}
+section.cv article{
+float:none;
+ max-width: 950px !important;
+}
