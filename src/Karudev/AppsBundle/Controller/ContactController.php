@@ -16,6 +16,15 @@ class ContactController extends Controller
      * 
      * @Template()
      */
+    public function defaultAction()
+    {
+    	
+        return array();
+    }
+    /**
+     * 
+     * @Template()
+     */
     public function createAction()
     {
     	$request = $this->get('request');

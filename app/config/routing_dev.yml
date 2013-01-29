@@ -39,8 +39,12 @@ _apps_enterprise_organisation:
 
 _apps_enterprise_contact:
     pattern:  /enterprise/contact
-    defaults: { _controller: KarudevAppsBundle:Contact:create }    
-
+    defaults: { _controller: KarudevAppsBundle:Contact:default }   
+    
+_apps_enterprise_contact_create:
+    pattern:  /enterprise/contact/create
+    defaults: { _controller: KarudevAppsBundle:Contact:create }  
+    
 _apps_enterprise_contact_show_all:
     pattern:  /enterprise/contact/show-all
     defaults: { _controller: KarudevAppsBundle:Contact:showall }    

@@ -81,7 +81,12 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         // _apps_enterprise_contact
         if ($pathinfo === '/enterprise/contact') {
-            return array (  '_controller' => 'Karudev\\AppsBundle\\Controller\\ContactController::createAction',  '_route' => '_apps_enterprise_contact',);
+            return array (  '_controller' => 'Karudev\\AppsBundle\\Controller\\ContactController::defaultAction',  '_route' => '_apps_enterprise_contact',);
+        }
+
+        // _apps_enterprise_contact_create
+        if ($pathinfo === '/enterprise/contact/create') {
+            return array (  '_controller' => 'Karudev\\AppsBundle\\Controller\\ContactController::createAction',  '_route' => '_apps_enterprise_contact_create',);
         }
 
         // _apps_enterprise_contact_show_all
