@@ -10,7 +10,7 @@
 		
 			
 			<h3>Création d'un nouveau contact</h3>
-				<form name="contact" method="post" >
+				<form name="contact_create" action="./contact" method="post" >
 					<table>
 						<tr>
 							<td>Civilité : </td>
@@ -96,6 +96,9 @@
 $(function() {
 $( "#tabs" ).tabs();
 $('#contact_show').loadHtml('#tabs-2','POST',true);
+
+//  Création du contact en ajax
+ $('form[name="contact_create"]').submitForm('Contact','contact');
 });
 </script>
 {% endblock %}

@@ -32,6 +32,13 @@ class ContactController extends Controller
     		$contact->setDateLastModified(time());
     		$em->persist($contact);
     		$em->flush();
+                
+                # On remet le formulaire à vide
+                /*unset($form);
+                $form = $this->createForm(new ContactType());
+                 */
+                echo json_encode('Le contact '.$contact->getPrenom().' '.$contact->getNom().' a été ajouté');
+                die();
     	}
         return array( 'form' => $form->createView());
     }

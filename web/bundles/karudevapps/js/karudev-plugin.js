@@ -51,7 +51,7 @@ $.fn.loadHtml = function(div,method,rel) {
 	//  return false;
   };
   
-    $.fn.submitForm = function(div,titre_retour,suffixe,noreload) {
+    $.fn.submitForm = function(titre_retour,suffixe,div,reload) {
         
 		var thisBis = this;
 	  $(this).submit(function()
@@ -69,7 +69,7 @@ $.fn.loadHtml = function(div,method,rel) {
 			  		data : form,
 			  		success: function( data ) {
 				  
-				  if(noreload == undefined)
+				  if(reload == true && div!=undefined)
 				  $(div).html('');
 			  		
                                        
@@ -80,12 +80,12 @@ $.fn.loadHtml = function(div,method,rel) {
 			  		
 			  			}
 			  		
-			  		/*$.pnotify({
+			  		$.pnotify({
 			  						title: titre_retour,
 			  						text: data,
 			  						type: 'success',
-			  						styling: 'jqueryui'
-			  					});*/
+			  						styling: 'bootstrap'
+			  					});
 			  		}
 			  		});
 			  return false;
