@@ -1,0 +1,29 @@
+    <table class="table table-striped">
+    	<thead>
+	    	<tr>
+	    		<th>ID</th>
+	    		<th>Nom</th>
+	    		<th>Adresse</th>
+	    		<th>Teléphone</th>
+	    		<th>Email</th>
+                        <th>Site</th>
+	    		<th></th>
+	    	</tr>
+	    </thead>
+	    <tbody>
+	    {% for key,organisation in organisations %}
+	    	<tr>
+	    		<td>#{{organisation.idOrganisation}}</td>
+	    		<td><a href="#">{{organisation.nom}}</a></td>
+	    		<td>{{organisation.adresseLigne1}}, {{organisation.cp}} {{organisation.ville}} </td>
+	    		<td>{{organisation.tel}}</td>
+	    		<td>{{organisation.email}}</td>
+                        <td>{{organisation.siteWeb}}</td>
+	    		<td>
+                            <img title="Voir"  style="cursor:pointer" src="{{ asset('bundles/karudevapps/images/divers/show.png') }}" />
+                            <img title="Supprimer"  style="cursor:pointer" src="{{ asset('bundles/karudevapps/images/divers/delete.png') }}" />
+                        </td>
+	    	</tr>
+	    {% endfor %}	
+	    </tbody>
+    </table>

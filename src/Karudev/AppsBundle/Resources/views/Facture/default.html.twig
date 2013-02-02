@@ -1,0 +1,28 @@
+{% extends "KarudevAppsBundle::layout.html.twig" %}
+{% block body %}
+	<div id="tabs" class="tabs-bottom">
+		<ul>
+			<li><a id="facture_show" rel="./facture/show-all" href="#tabs-1"><i class="icon-search"></i> Voir ses factures</a></li>
+                        <li><a id="facture_create" rel="./facture/create" href="#tabs-2"><i class="icon-plus-sign"></i> Créer un facture</a></li>
+			
+		</ul>
+	<div class="tabs-spacer"></div>
+		<div id="tabs-1">
+		<!--    {% render 'KarudevAppsBundle:Contact:showAll' %} -->
+		</div>
+		<div id="tabs-2">
+               
+		</div>
+		
+	</div>
+{% endblock %}
+{% block javascripts %}  
+<script>
+$(function() {
+$( "#tabs" ).tabs();
+$('#facture_create').loadHtml('#tabs-2','GET',true);
+$('#facture_show').loadHtml('#tabs-1','POST',true);
+
+});
+</script>
+{% endblock %}

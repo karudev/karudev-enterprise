@@ -1,0 +1,75 @@
+{% extends "::base.html.twig" %}
+{% block header %}
+<h1>Des informations supplémentaires ?</h1>
+<p>Contactez moi via le formulaire de contact ou suiver moi sur <a target="_blank" href="http://twitter.com/karudev">@karudev</a></p>
+{% endblock %}
+{% block body %}
+	<section style="margin-right : 100px" >
+	<h2>Contact</h2>
+	{% if(email == null) %}
+	<form action="./contact" method="post" name="email" >
+		<table>
+			<thead></thead>
+			<tbody>
+				<tr>
+					<td><input name="contact[societe]" class="input-xlarge"  id="prependedInput" type="text" required placeholder="Société"></td>
+				</tr>
+				<tr>
+					<td><input name="contact[nom]" class="input-xlarge"  id="prependedInput" type="text" required placeholder="Nom"></td>
+				</tr>
+				<tr>
+					<td><input name="contact[prenom]" class="input-xlarge"  id="prependedInput" type="text" required placeholder="Prénom"></td>
+				</tr>
+				<tr>
+					<td><input name="contact[telephone]" class="input-xlarge"  id="prependedInput" type="text" placeholder="Téléphone"></td>
+				</tr>
+				<tr>
+					<td><input name="contact[email]" class="input-xlarge"  id="prependedInput" type="email" required placeholder="votre@email.com"></td>
+				</tr>
+				<tr>
+					<td><input name="contact[objet]" class="input-xlarge"  id="prependedInput" type="text" required placeholder="Objet"></td>
+				</tr>
+				<tr>
+					<td>	<select name="contact[categorie]" class="input-xlarge" required>
+							<option value=""> -- Catégorie --</option>
+							<option>Proposition de mission(s)</option>
+							<option>Développement de projet(s)</option>
+							<option>Autre</option>
+							</select>
+					</td>
+				</tr>
+				<tr>
+					<td><textarea name="contact[message]" class="input-xxlarge" cols="10" rows="10" required></textarea></td>
+				</tr>
+				
+				<tr>
+					<td>
+					<button type="submit" class="btn btn-warning">Envoyer</button>
+					<button type="button" class="btn">Annuler</button>
+					</td>
+				</tr>
+				 
+			</tbody>
+		</table>
+	</form>
+	{% elseif(email != null) %}
+	<div class="alert alert-success">
+    Le message suivant a été envoyé avec succès
+    </div>
+	{{email|raw}}
+	{% endif%}
+	
+	</section>
+	<section>
+	<figure style="float:left;margin:0;margin-top:20px" ><a  target="_blank" href="http://twitter.com/karudev" ><img  width="100px" src="{{ asset('bundles/karudevsite/images/logos/karudev_mini.png') }} "></a></figure> 
+	<figure style="float:left"><img  width="100px" src="{{ asset('bundles/karudevsite/images/logos/twitter.jpeg') }} "></figure> 
+	<article>
+	{{twits|raw}}
+	</article>
+
+	</section>
+
+{% endblock %}
+
+
+

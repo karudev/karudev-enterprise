@@ -1,0 +1,89 @@
+<section id="section-{{contact.id}}" class="show">
+    <h3>Fiche contact de {{contact.civilite}} {{contact.prenom}} {{contact.nom}}</h3>
+    <table >
+        <tr>
+            <td>Civilité : </td>
+            <td><strong>{{contact.civilite}}</strong></td>
+            <td></td>
+             <td></td>
+        </tr>
+        <tr>
+            <td>Nom : </td>
+            <td><strong>{{contact.nom}}</td>
+            <td>Prénom : </td>
+            <td><strong>{{contact.prenom}}</td>
+        </tr>
+        <tr>
+            <td>Fonction : </td>
+            <td><strong>{{contact.fonction}}</td>
+            <td>Service : </td>
+            <td><strong>{{contact.service}}</td>
+        </tr>
+        <tr>
+            <td>Tel Pro: </td>
+            <td><strong>{{contact.telPro}}</td>
+            <td>Portable perso: </td>
+            <td><strong>{{contact.portablePerso}}</td>
+        </tr>
+        <tr>
+            <td>Email pro : </td>
+            <td><strong>{{contact.emailPro}}</td>
+            <td>Email perso : </td>
+            <td><strong>{{contact.emailPerso}}</td>
+        </tr>
+        <tr>
+            <td>Fax : </td>
+            <td><strong>{{contact.fax}}</td>
+        </tr>
+        <tr>
+            <td>Adresse : </td>
+            <td colspan="3">
+                <address>
+                    <strong>
+                        <p>{{contact.adresseLigne1}}</p>
+                        <p>{{contact.adresseLigne2}}</p>
+                        <p>{{contact.adresseLigne3}}</p>
+                        <p>{{contact.cp}} {{contact.ville}}</p>
+                        <p>{{contact.region}} {{contact.pays}}</p>
+                    </strong>
+                </address>
+            </td>
+
+
+        </tr>
+        <tr>
+            <td>Site web : </td>
+            <td><strong>{{contact.sitePerso}}</strong></td>
+        </tr>
+        <tr style="height:20px;">
+            <td>
+                <a id="modifier-{{contact.id}}" href="./contact/edit/{{contact.id}}" class="btn btn-warning" type="submit">Modifier</a>
+            </td>
+            <td></td>
+            <td></td>
+            <td style="text-align: right" >
+                <button class="btn btn-danger" type="submit">Supprimer</button>
+            </td>
+           
+        </tr>
+    </table>
+</section>
+<section class="show" >
+    <h3>Ses organisations</h3>
+    <div style="padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid #CCC" >
+        {% for key,organisation in organisations %}
+            {{organisation.idOrganisation.nom}} <img title="Supprimer"  style="cursor:pointer" src="{{ asset('bundles/karudevapps/images/divers/delete.png') }}" />
+        {% endfor %}
+    </div>
+    <div>
+        <form name="contact_liercontactorganisation-{{contact.id}}" action="./contact/liercontactorganisation/{{contact.id}}">
+        <div> {{ form_widget(form.idOrganisation) }}</div>
+        <div> <button class="btn btn-success" type="submit">Lier</button></div>
+        </form>
+    </div>
+    
+</section>
+<script>
+    $('#modifier-{{contact.id}}').loadHtml('#section-{{contact.id}}','GET');
+    $('form[name="contact_liercontactorganisation-{{contact.id}}"]').submitForm();
+</script>

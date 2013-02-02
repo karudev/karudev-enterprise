@@ -1,0 +1,129 @@
+{% extends "::base.html.twig" %}
+{% block header %}
+			<h1>...Développements Web sur mesure!</h1>
+			<p>karudev propose de prendre en charge vos projets web spécifiques, de faibles ou grandes complexités.<p>
+			<p>Freelance Php, Dolyveen Renault développe des appliquations et sites en php,html,jquery et utilise divers frameworks ( SYMFONY2, ZEND )
+			 afin de gagner en temps, stabilité et sécurité.<p>
+			<p>N'hésitez pas à me contacter pour plus d'informations.</p>
+{% endblock %}
+{% block body %}
+
+
+	<article>
+	<section  style="text-align:center" >
+	<img class="photo" title="Dolyveen Renault, Développeur Web Paris et Dom-Tom" alt="Présentation" src="{{ asset('bundles/karudevsite/images/photos/moi.jpg') }}" />
+	</section>
+	<section >
+	<h2> ...L'entreprise en quelques mots</h2>
+<p>karudev est une entreprise individuelle crée en 2009, proposant des services de programmation informatique.</p>
+<p>De nature entreprenarial et autodidacte, <b>Dolyveen RENAULT est le Développeur Web</b> de la structure.</p>
+<p>BTS IRIS en poche, 1 année d'ingénieur effectuée, des années d'expériences aquises avec des projets réussis, je suis prêt à répondre à vos besoins en développement !</p>
+ </section>
+ <section >
+<h3>Mon Objectif</h3>
+<p>Mener à bien vos projets et instaurer une relation de confiance avec vous. <br/>
+Je souhaite relever de nouveaux challenges !</p>
+
+<h3>Historique</h3>
+<p>Ayant débuter en 2008  en tant que développeur web (salarié), petit à petit j'ai fais mes preuves dans le métier jusqu'à devenir Chef de projet Web.</p>
+<p>Par la suite le projet karudev, s'est concrétisé par la volonté de me mettre à mon compte dans le domaine du développement web.</p>
+	</section>
+	</article>
+	<article>
+	<h2>...Développements d'applications web</h2>
+<p>Fort de mon expérience et savoir faire, je peux :</p>
+<ul class="liste" >
+	<li>Concevoir un cahier des charges selon l'expression de vos besoins</li>
+	<li>Concevoir la structure de votre base de donnée</li>
+	<li>Mettre en place un planning de développement</li>
+	<li>Développer votre extranet ou intranet</li>
+	<li>Développer vos fronts et backs office</li>
+	<li>Développer un site e-commerce</li>
+	<li>Développer tous types d'applications web complexes</li>
+</ul>
+
+	<h2>...Technologies/Languages principalements utilisés</h2>
+<ul class="liste" >
+	<li>PHP 5.x</li>
+	<li>Symfony 2.x</li>
+	<li>Zend 1.x</li>
+	<li>ORM Doctrine 2</li>
+	<li>Html5</li>
+	<li>Css3</li>
+        <li>Xml</li>
+	<li>Twig</li>
+	<li>Mysql</li>
+	<li>Oracle</li>
+        <li>Git</li>
+	<li>Twitter Bootstrap</li>
+	<li>Jquery</li>
+	<li>Highcharts</li>
+	<li>Responsive Design
+		<figure><img src="{{ asset('bundles/karudevsite/images/divers/responsive.jpeg') }}" /></figure>
+	</li>
+	
+</ul>
+
+	</article>
+	<section class="round">
+	<h2> ...Développements réalisés</h2>
+		<ul class="round">
+			<!--<li>
+			<img  src="{{ asset('bundles/karudevsite/images/prestations/muzicast.png') }} ">
+			<article>
+			<h4>Muzicast V2</h4>
+			Analyse des diffusions musicales (Salarié chez Yacast France)
+			</article>
+			</li>
+			<li>
+			<img  src="{{ asset('bundles/karudevsite/images/prestations/club.png') }} ">
+			<article>
+			<h4>Clubmonitoring</h4>
+			Suivi des diffusions musicales en discothèques (Salarié chez Yacast France)
+			</article>
+			</li>-->
+			<li>
+			<img  src="{{ asset('bundles/karudevsite/images/prestations/presta3.png') }} ">
+			<article>
+			<h4>Presta v3</h4>
+			Développement d'appliquations "Prestation Emploi" dans l'environnement egroupware (Freelance - APSIE) 
+			</article>
+			</li>
+			<li>
+			<img  src="{{ asset('bundles/karudevsite/images/prestations/jeux.png') }} ">
+			<article>
+			<h4>Echangejeuxvideo.com</h4>
+			Développement d'un site d'échange de jeux vidéos en guadeloupe (Freelance - NEGOCIA2COM)
+			</article>
+			</li>
+			<li>
+			<img  src="{{ asset('bundles/karudevsite/images/prestations/gig.png') }} ">
+			<article>
+			<h4>GIG Conseil</h4>
+			Développement de l'extranet (Salarié chez GIG Conseil)
+			</article>
+			</li>
+			<li>
+			<img  src="{{ asset('bundles/karudevsite/images/prestations/free.png') }} ">
+			<article>
+			<h4>Projet personel</h4>
+			//.....
+			</article>
+			</li>
+			
+
+		</ul>
+	</section>
+
+{% endblock %}
+
+{% block javascripts %}
+<script>
+ $(document).ready(function() {
+$('ul.round').roundabout({ autoplay: true,
+         autoplayDuration: 4000,
+         autoplayPauseOnHover: true});
+  });
+</script>
+{% endblock %}
+
