@@ -19,7 +19,6 @@ class Contact
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      * @ORM\OneToMany(targetEntity="Contrat", mappedBy="Contact")
-     * @ORM\OneToMany(targetEntity="Facture", mappedBy="Contact")
      * @ORM\OneToMany(targetEntity="Liencontactorganisation", mappedBy="id_contact")
      */
     private $id;
