@@ -92,5 +92,28 @@ $.fn.loadHtml = function(div,method,rel) {
 
 			  });
   };
+  
+    $.fn.submitFormAndReturnHtml = function(div) {
+        var thisBis = this;
+        $(this).click(function()
+        {
+
+            var form = $(thisBis).parents('form').serializeArray();
+            $(div).html('<div style="margin:90px" ><img src="'+domaine+'/bundles/lea/images/divers/load.gif" /></div>');
+			  
+            $.ajax({
+                url: $(thisBis).attr('class'),
+                dataType: "html",
+                type : "POST",
+                data : form,
+                success: function(html) {
+				  
+                  $(div).html(html);  
+                }
+            });
+            //return false;
+
+        });
+    };
  
 })( jQuery );
