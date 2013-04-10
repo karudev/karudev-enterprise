@@ -1,0 +1,12 @@
+
+.insertions section
+{
+ 
+    clear: both;
+    padding: 0px !important;
+}
+.insertions table.recap td{
+    
+    padding :5px;
+    width: 150px;
+}

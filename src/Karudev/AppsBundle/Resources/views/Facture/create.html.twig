@@ -3,8 +3,17 @@
     <table>
         <tr>
             <td>Client : </td>
+            <td>{{ form_widget(form.idOrganisation)}}</td>
+        </tr>
+        <tr>
+            <td>Contact Client : </td>
             <td>{{ form_widget(form.idClient)}}</td>
         </tr>
+        <tr>
+            <td>Délai de paiement : </td>
+            <td>{{ form_widget(form.termOfPayment,{'attr' :{'class' : 'input-mini'} } ) }} jours</td>
+        </tr>
+       
        
         <tr>
             <td></td>

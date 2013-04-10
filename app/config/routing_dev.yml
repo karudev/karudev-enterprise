@@ -39,8 +39,32 @@ _apps_enterprise_organisation:
 
 _apps_enterprise_contact:
     pattern:  /enterprise/contact
-    defaults: { _controller: KarudevAppsBundle:Contact:create }    
+    defaults: { _controller: KarudevAppsBundle:Contact:create }  
+    
+_apps_enterprise_facture:
+    pattern:  /enterprise/facture
+    defaults: { _controller: KarudevAppsBundle:Facture:default }  
+ 
+_apps_enterprise_facture_create:
+    pattern:  /enterprise/facture/create
+    defaults: { _controller: KarudevAppsBundle:Facture:create }  
+    
+_apps_enterprise_facture_show_all:
+    pattern:  /enterprise/facture/show-all
+    defaults: { _controller: KarudevAppsBundle:Facture:showall }  
 
+_apps_enterprise_facture_show:
+    pattern:  /enterprise/facture/show/{id}
+    defaults: { _controller: KarudevAppsBundle:Facture:show }
+
+_apps_enterprise_facture_createdetails:
+    pattern:  /enterprise/facture/createdetails/{idFacture}
+    defaults: { _controller: KarudevAppsBundle:Facture:createdetails, idFacture:null }
+    
+_apps_enterprise_facture_download:
+    pattern:  /enterprise/facture/download/{id}
+    defaults: { _controller: KarudevAppsBundle:Facture:download }    
+    
 _apps_enterprise_contact_show_all:
     pattern:  /enterprise/contact/show-all
     defaults: { _controller: KarudevAppsBundle:Contact:showall }    

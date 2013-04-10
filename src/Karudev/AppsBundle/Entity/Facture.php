@@ -22,9 +22,8 @@ class Facture
     private $id;
 
     /**
-     * @var integer $idOwner
-     *
-     * @ORM\Column(name="id_owner", type="integer")
+	 * @ORM\ManyToOne(targetEntity="Compte", inversedBy="Facture")
+	 * @ORM\JoinColumn(name="id_owner", referencedColumnName="id_compte")
      */
     private $id_owner;
 
@@ -42,10 +41,9 @@ class Facture
      */
     private $date_last_modified;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_modifier", type="integer")
+     /**
+	 * @ORM\ManyToOne(targetEntity="Compte", inversedBy="Facture")
+	 * @ORM\JoinColumn(name="id_modifier", referencedColumnName="id_compte")
      */
     private $id_modifier;
 
@@ -61,7 +59,26 @@ class Facture
 	 * @ORM\JoinColumn(name="id_client", referencedColumnName="id_contact")
      */
     private $id_client;
+    
+     /**
+	 * @ORM\ManyToOne(targetEntity="Organisation", inversedBy="Facture")
+	 * @ORM\JoinColumn(name="id_organisation", referencedColumnName="id_organisation")
+     */
+    private $id_organisation;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="term_of_payment", type="integer", nullable=true)
+     */
+    private $term_of_payment;
+    
+     /**
+     * @ORM\ManyToOne(targetEntity="Facturestatus", inversedBy="Facture")
+     * @ORM\JoinColumn(name="id_facture_status", referencedColumnName="id_facture_status")
+     * 
+     */
+    private $id_facture_status;
 
     /**
      * Get id
@@ -75,7 +92,7 @@ class Facture
     
     public function getName()
     {
-        return date('Y',$this->getDateCreated()).'-'.$this->id;
+        return date('Y',$this->getDateCreated()).'-'.str_pad($this->id, 4, 0, STR_PAD_LEFT);
     }
 
     /**
@@ -216,5 +233,76 @@ class Facture
     public function getIdClient()
     {
         return $this->id_client;
+    }
+
+    /**
+     * Set term_of_payment
+     *
+     * @param integer $termOfPayment
+     * @return Facture
+     */
+    public function setTermOfPayment($termOfPayment)
+    {
+        $this->term_of_payment = $termOfPayment;
+    
+        return $this;
+    }
+
+    /**
+     * Get term_of_payment
+     *
+     * @return integer 
+     */
+    public function getTermOfPayment()
+    {
+        return $this->term_of_payment;
+    }
+
+   
+
+    /**
+     * Set id_facture_status
+     *
+     * @param \Karudev\AppsBundle\Entity\Facturestatus $idFactureStatus
+     * @return Facture
+     */
+    public function setIdFactureStatus(\Karudev\AppsBundle\Entity\Facturestatus $idFactureStatus = null)
+    {
+        $this->id_facture_status = $idFactureStatus;
+    
+        return $this;
+    }
+
+    /**
+     * Get id_facture_status
+     *
+     * @return \Karudev\AppsBundle\Entity\Facturestatus 
+     */
+    public function getIdFactureStatus()
+    {
+        return $this->id_facture_status;
+    }
+
+    /**
+     * Set id_organisation
+     *
+     * @param \Karudev\AppsBundle\Entity\Organisation $idOrganisation
+     * @return Facture
+     */
+    public function setIdOrganisation(\Karudev\AppsBundle\Entity\Organisation $idOrganisation = null)
+    {
+        $this->id_organisation = $idOrganisation;
+    
+        return $this;
+    }
+
+    /**
+     * Get id_organisation
+     *
+     * @return \Karudev\AppsBundle\Entity\Organisation 
+     */
+    public function getIdOrganisation()
+    {
+        return $this->id_organisation;
     }
 }

@@ -1,0 +1,123 @@
+
+<style>
+        .recap
+        {
+            margin-top : 50px;
+        }
+        
+table {
+  
+  background-color: transparent;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.table {
+ 
+  margin-bottom: 20px;
+}
+
+.table th,
+.table td {
+  padding: 5px;
+  line-height: 20px;
+  text-align: left;
+  vertical-align: top;
+ 
+}
+
+.table th {
+  font-weight: bold;
+}
+
+.table thead th {
+  vertical-align: bottom;
+}
+table.client{
+right : 190px;
+
+position : relative;
+
+}
+table.condition{
+top : 900px;
+
+position : absolute;
+
+}
+table.client td {
+
+text-align: right;
+}
+
+
+    </style><page>
+        <page_header>
+            <img src="{{ asset('http://'~serverName~'/bundles/karudevsite/images/logos/logo_off.png') }}"  />
+        </page_header>
+
+         <table class="recap">
+            <tr>
+                <td>{{facture.idFreelance.idContact.civilite|upper}} {{facture.idFreelance.idContact.nom|upper}} {{facture.idFreelance.idContact.prenom|upper}}</td>
+            </tr>
+            <tr>
+                <td>{{facture.idFreelance.idContact.fonction|upper}}</td>
+            </tr>
+            <tr>
+                <td>{{facture.idFreelance.idContact.adresseLigne1|upper}}</td>
+            </tr>
+            <tr>
+                <td>{{facture.idFreelance.idContact.cp}}, {{facture.idFreelance.idContact.ville|upper}}</td>
+            </tr>
+            
+        </table>
+         <table class="client">
+            <tr>
+                <td>{{facture.idClient.civilite|upper}} {{facture.idClient.nom|upper}} {{facture.idClient.prenom|upper}}</td>
+            </tr>
+            <tr>
+                <td>{{facture.idOrganisation.nom|upper}}</td>
+            </tr>
+            <tr>
+                <td>{{facture.idOrganisation.adresseLigne1|upper}}</td>
+            </tr>
+            <tr>
+                <td>{{facture.idOrganisation.cp}}, {{facture.idOrganisation.ville|upper}}</td>
+            </tr>
+            
+        </table>
+
+        <table style="margin-bottom:120px;">
+            <tr>
+                <td><h2>Facture FA{{facture.name}}</h2></td>
+             </tr>
+             <tr>
+                 <td><b>Date : {{facture.dateCreated|date('d/m/Y')}}</b></td>
+            </tr>
+        </table>
+         <hr style="clear:both" />
+        {% render 'KarudevAppsBundle:Facture:showinsertions' with {'idFacture': facture.id, 'serverName' : serverName } %} 
+
+        <table class="condition">
+            <tr>
+                <td><h4>Condition de réglement</h4></td>
+            </tr>
+            <tr>
+                <td>
+                {% if facture.termOfPayment > 0 %} 
+                    Le délai de paiement est fixé à <b>{{facture.termOfPayment}} jours</b>, après réception de la facture.
+                {% else %}
+                    Le réglement de la facture est <b>immédiat</b>, dès sa réception.
+                {% endif %}
+                </td>
+            </tr>
+        </table>
+        <page_footer>
+            <table>
+                <tr>
+                    <td style="font-style: italic">Facture édité le {{"now"|date('d/m/Y')}} <br/>par {{facture.idFreelance.idContact.prenom}} {{facture.idFreelance.idContact.nom}}</td>
+                </tr>
+            </table>
+        </page_footer>
+
+    </page>
