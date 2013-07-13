@@ -4,6 +4,8 @@
 	    		<th>ID</th>
 	    		<th>Date de création</th>
 	    		<th>Client</th>
+                        <th>Délai de paiement</th>
+                        <th>Status</th>
 	    	
 	    		<th></th>
 	    	</tr>
@@ -12,26 +14,26 @@
 	    {% for key,facture in factures %}
 	    	<tr>
 	    		<td class="voir" >#FA{{facture.name}}</td>
-	    		<td >{{facture.dateCreated|date('d/m/Y')}}</td>
-	    		<td>{{facture.idClient.prenom}} {{facture.idClient.nom}}</td>
-	    		
+	    		<td>{{facture.dateCreated|date('d/m/Y')}}</td>
+	    		<td>{{facture.idOrganisation.nom}}</td>
+	    		<td>{% if facture.termOfPayment > 0 %} {{facture.termOfPayment}} jours {% endif %}</td>
+                        <td>{{facture.idFactureStatus.libelle}}</td>
 	    		<td>
-                            <img class="voir" title="Voir"  style="cursor:pointer" src="{{ asset('bundles/karudevapps/images/divers/show.png') }}" />
+                            <a target="_blank" href="./facture/download/{{facture.id}}" ><img class="print" title="Télécharger la facture"  style="cursor:pointer" src="{{ asset('bundles/karudevapps/images/divers/pdf.png') }}" /></a>
+                            <img rel="./facture/show/{{facture.id}}" class="edit" title="Modifier"  style="cursor:pointer" src="{{ asset('bundles/karudevapps/images/divers/edit.png') }}" />
+                           
                             <img title="Supprimer"  style="cursor:pointer" src="{{ asset('bundles/karudevapps/images/divers/delete.png') }}" />
                         </td>
 	    	</tr>
-                <tr class="details">
-                    <td colspan="6">
-                    
-                    </td>
-                </tr>
-	    {% endfor %}	
+                	    {% endfor %}	
 	    </tbody>
     </table>
+ {% block javascripts %}
+   
     <script>
-        // Appliquation du chatiot sur une classe
-       $('.voir').chariot('.details');
-    
+       
+       $('.edit').loadHtml('#tabs-1','GET',true);
    
 
     </script>
+  {% endblock %}

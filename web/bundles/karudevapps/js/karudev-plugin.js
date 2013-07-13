@@ -26,15 +26,16 @@ $.fn.loadHtml = function(div,method,rel) {
         var thisBis = this;
         var href;
         
-        if(rel)
-         href = $(thisBis).attr('rel');
-        else
-         href = $(thisBis).attr('href');
+       
       
 	  
 	 
 	  $(this).click(function(event)
 			  {
+         if(rel)
+         href = $(this).attr('rel');
+        else
+         href = $(this).attr('href');
 		  event.preventDefault();
 		 
 			 // $(div).html('<div style="margin:90px" ><img src="'+domaine+'/bundles/lea/images/divers/load.gif" /></div>');

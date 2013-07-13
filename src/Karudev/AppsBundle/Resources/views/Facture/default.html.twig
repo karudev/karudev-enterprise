@@ -1,10 +1,13 @@
 {% extends "KarudevAppsBundle::layout.html.twig" %}
+{% block stylesheets %}
+<link href="{{ asset('bundles/karudevapps/css/facture.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
 {% block body %}
 	<div id="tabs" class="tabs-bottom">
 		<ul>
 			<li><a id="facture_show" rel="./facture/show-all" href="#tabs-1"><i class="icon-search"></i> Voir ses factures</a></li>
                         <li><a id="facture_create" rel="./facture/create" href="#tabs-2"><i class="icon-plus-sign"></i> Créer un facture</a></li>
-			
+			<li><a id="facture_bilan" rel="./facture/bilan" href="#tabs-3"><i class="icon-plus-sign"></i> Voir le bilan</a></li>
 		</ul>
 	<div class="tabs-spacer"></div>
 		<div id="tabs-1">

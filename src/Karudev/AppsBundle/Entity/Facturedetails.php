@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Facturedetails
  *
- * @ORM\Table()
+ * @ORM\Table(name="Facturedetails")
  * @ORM\Entity(repositoryClass="Karudev\AppsBundle\Entity\FacturedetailsRepository")
  */
 class Facturedetails
@@ -22,9 +22,8 @@ class Facturedetails
     private $id;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_facture", type="integer")
+	 * @ORM\ManyToOne(targetEntity="Facture", inversedBy="Facturedetails")
+	 * @ORM\JoinColumn(name="id_facture", referencedColumnName="id_facture", nullable = false)
      */
     private $id_facture;
 
@@ -73,7 +72,7 @@ class Facturedetails
     /**
      * @var float
      *
-     * @ORM\Column(name="amount", type="float")
+     * @ORM\Column(name="amount", type="float", nullable = true)
      */
     private $amount;
 
