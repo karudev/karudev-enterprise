@@ -48,10 +48,9 @@ class Organisation
     private $idModifier;
 
     /**
-     * @var integer $idDirecteur
-     *
-     * @ORM\Column(name="id_directeur", type="integer", nullable=true)
-     */
+    * @ORM\ManyToOne(targetEntity="Contact", inversedBy="Organisation")
+    * @ORM\JoinColumn(name="id_directeur", referencedColumnName="id_contact")
+    */
     private $idDirecteur;
 
     /**
@@ -181,6 +180,20 @@ class Organisation
      */
     private $description;
 
+    /**
+     * @var string $rib
+     *
+     * @ORM\Column(name="rib", type="string", length=23, nullable=true)
+     */
+    private $rib;
+    
+     /**
+     * @var string $codeApe
+     *
+     * @ORM\Column(name="code_ape", type="string", length=6, nullable=true)
+     */
+    private $codeApe;
+    
 	public function __construct()
 	{
 	$this->idOrganisation = new ArrayCollection();
@@ -265,28 +278,7 @@ class Organisation
         return $this->idModifier;
     }
 
-    /**
-     * Set idDirecteur
-     *
-     * @param integer $idDirecteur
-     * @return Organisation
-     */
-    public function setIdDirecteur($idDirecteur)
-    {
-        $this->idDirecteur = $idDirecteur;
-    
-        return $this;
-    }
-
-    /**
-     * Get idDirecteur
-     *
-     * @return integer 
-     */
-    public function getIdDirecteur()
-    {
-        return $this->idDirecteur;
-    }
+  
 
     /**
      * Set dateLastModified
@@ -700,5 +692,74 @@ class Organisation
     public function getStatutJuridique()
     {
         return $this->statut_juridique;
+    }
+
+    /**
+     * Set rib
+     *
+     * @param string $rib
+     * @return Organisation
+     */
+    public function setRib($rib)
+    {
+        $this->rib = $rib;
+    
+        return $this;
+    }
+
+    /**
+     * Get rib
+     *
+     * @return string 
+     */
+    public function getRib()
+    {
+        return substr($this->rib, 0,5).' '.substr($this->rib, 5,5).' '.substr($this->rib, 10,11).' '.substr($this->rib, 21,2);
+    }
+
+    /**
+     * Set codeApe
+     *
+     * @param string $codeApe
+     * @return Organisation
+     */
+    public function setCodeApe($codeApe)
+    {
+        $this->codeApe = $codeApe;
+    
+        return $this;
+    }
+
+    /**
+     * Get codeApe
+     *
+     * @return string 
+     */
+    public function getCodeApe()
+    {
+        return $this->codeApe;
+    }
+
+    /**
+     * Set idDirecteur
+     *
+     * @param \Karudev\AppsBundle\Entity\Contact $idDirecteur
+     * @return Organisation
+     */
+    public function setIdDirecteur(\Karudev\AppsBundle\Entity\Contact $idDirecteur = null)
+    {
+        $this->idDirecteur = $idDirecteur;
+    
+        return $this;
+    }
+
+    /**
+     * Get idDirecteur
+     *
+     * @return \Karudev\AppsBundle\Entity\Contact 
+     */
+    public function getIdDirecteur()
+    {
+        return $this->idDirecteur;
     }
 }

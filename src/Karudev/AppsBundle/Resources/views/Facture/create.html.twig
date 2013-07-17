@@ -2,12 +2,20 @@
 <form name="facture_create" action="./facture/create" method="post" >
     <table>
         <tr>
-            <td>Client : </td>
-            <td>{{ form_widget(form.idOrganisation)}}</td>
+            <td>Date de facturation : </td>
+            <td>{{ form_widget(form.billingDate)}}</td>
         </tr>
         <tr>
-            <td>Contact Client : </td>
-            <td>{{ form_widget(form.idClient)}}</td>
+            <td>Client : </td>
+            <td>{{ form_widget(form.idOrganisation)}}</td>
+        </tr> 
+        <tr>
+            <td>Mode de réglement : </td>
+            <td>{{ form_widget(form.methodpayment)}}</td>
+        </tr>
+        <tr>
+            <td>TVA : </td>
+            <td>{{ form_widget(form.tva,{'attr' :{'class' : 'input-small'} } ) }} %</td>
         </tr>
         <tr>
             <td>Délai de paiement : </td>

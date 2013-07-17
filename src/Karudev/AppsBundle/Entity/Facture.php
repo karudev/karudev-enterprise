@@ -30,14 +30,21 @@ class Facture
     /**
      * @var integer
      *
-     * @ORM\Column(name="date_created", type="bigint")
+     * @ORM\Column(name="billing_date", type="datetime")
+     */
+    private $billing_date;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="date_created", type="datetime")
      */
     private $date_created;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="date_last_modified", type="bigint")
+     * @ORM\Column(name="date_last_modified", type="datetime")
      */
     private $date_last_modified;
 
@@ -54,11 +61,6 @@ class Facture
      */
     private $id_freelance;
 
-    /**
-	 * @ORM\ManyToOne(targetEntity="Contact", inversedBy="Facture")
-	 * @ORM\JoinColumn(name="id_client", referencedColumnName="id_contact")
-     */
-    private $id_client;
     
      /**
 	 * @ORM\ManyToOne(targetEntity="Organisation", inversedBy="Facture")
@@ -79,7 +81,24 @@ class Facture
      * 
      */
     private $id_facture_status;
+    
+    /**
+     * @var decimal
+     *
+     * @ORM\Column(name="methodpayment", type="string", length=64)
+     */
+    private $methodpayment;
 
+    /**
+     * @var decimal
+     *
+     * @ORM\Column(name="tva", type="decimal",length= 10, scale= 1)
+     */
+    private $tva;
+
+    private $freelance_org;
+   
+    
     /**
      * Get id
      *
@@ -92,7 +111,10 @@ class Facture
     
     public function getName()
     {
-        return date('Y',$this->getDateCreated()).'-'.str_pad($this->id, 4, 0, STR_PAD_LEFT);
+        return str_pad($this->id, 4, 0, STR_PAD_LEFT);
+    }
+    public function getPaymentDelay(){
+       return date('d/m/Y',($this->getTermOfPayment() * 24 * 60 *60) + $this->getBillingDate()->getTimestamp());
     }
 
     /**
@@ -134,7 +156,7 @@ class Facture
     /**
      * Get date_created
      *
-     * @return integer 
+     * @return \DateTime 
      */
     public function getDateCreated()
     {
@@ -157,7 +179,7 @@ class Facture
     /**
      * Get date_last_modified
      *
-     * @return integer 
+     * @return \DateTime 
      */
     public function getDateLastModified()
     {
@@ -212,28 +234,7 @@ class Facture
         return $this->id_freelance;
     }
 
-    /**
-     * Set id_client
-     *
-     * @param integer $idClient
-     * @return Facture
-     */
-    public function setIdClient($idClient)
-    {
-        $this->id_client = $idClient;
-    
-        return $this;
-    }
-
-    /**
-     * Get id_client
-     *
-     * @return integer 
-     */
-    public function getIdClient()
-    {
-        return $this->id_client;
-    }
+  
 
     /**
      * Set term_of_payment
@@ -304,5 +305,99 @@ class Facture
     public function getIdOrganisation()
     {
         return $this->id_organisation;
+    }
+    
+    /**
+     * Set freelance_org
+     *
+     * @param \Karudev\AppsBundle\Entity\Organisation $freelanceOrg
+     * @return Facture
+     */
+    public function setFreelanceOrg(\Karudev\AppsBundle\Entity\Organisation $freelanceOrg = null)
+    {
+        $this->freelance_org = $freelanceOrg;
+    
+        return $this;
+    }
+
+    /**
+     * Get freelance_org
+     *
+     * @return \Karudev\AppsBundle\Entity\Organisation
+     */
+    public function getFreelanceOrg()
+    {
+        return $this->freelance_org;
+    }
+
+  
+
+    /**
+     * Set billing_date
+     *
+     * @param \DateTime $billingDate
+     * @return Facture
+     */
+    public function setBillingDate($billingDate)
+    {
+        $this->billing_date = $billingDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get billing_date
+     *
+     * @return \DateTime 
+     */
+    public function getBillingDate()
+    {
+        return $this->billing_date;
+    }
+
+    /**
+     * Set tva
+     *
+     * @param float $tva
+     * @return Facture
+     */
+    public function setTva($tva)
+    {
+        $this->tva = $tva;
+    
+        return $this;
+    }
+
+    /**
+     * Get tva
+     *
+     * @return float 
+     */
+    public function getTva()
+    {
+        return $this->tva;
+    }
+
+    /**
+     * Set methodpayment
+     *
+     * @param string $methodpayment
+     * @return Facture
+     */
+    public function setMethodpayment($methodpayment)
+    {
+        $this->methodpayment = $methodpayment;
+    
+        return $this;
+    }
+
+    /**
+     * Get methodpayment
+     *
+     * @return string 
+     */
+    public function getMethodpayment()
+    {
+        return $this->methodpayment;
     }
 }

@@ -2,7 +2,7 @@
 <style>
         .recap
         {
-            margin-top : 50px;
+            margin-top : 120px;
         }
         
 table {
@@ -34,13 +34,14 @@ table {
   vertical-align: bottom;
 }
 table.client{
-right : 190px;
+right : 225px;
+margin-top:-65px;
 
 position : relative;
 
 }
 table.condition{
-top : 900px;
+top : 800px;
 
 position : absolute;
 
@@ -50,30 +51,111 @@ table.client td {
 text-align: right;
 }
 
+.bulle th,.bulle td{
+    padding: 3px;
+    text-align: center;
+    border:1px solid #282828; 
+    width : 160px;
+}
+.bulle th{
+-webkit-border-top-left-radius: 5px;
+-webkit-border-top-right-radius: 5px;
+-moz-border-radius-topleft: 5px;
+-moz-border-radius-topright: 5px;
+border-top-left-radius: 5px;
+border-top-right-radius: 5px; 
+}
+
+.bulle td{
+-webkit-border-bottom-right-radius: 5px;
+-webkit-border-bottom-left-radius: 5px;
+-moz-border-radius-bottomright: 5px;
+-moz-border-radius-bottomleft: 5px;
+border-bottom-right-radius: 5px;
+border-bottom-left-radius: 5px;
+}
+.totaux th,.totaux td{
+    padding: 7px;
+    text-align: center;
+    border:1px solid #282828; 
+   
+}
+.totaux td{
+
+}
+
+.totaux tr.first td.first{
+-webkit-border-top-left-radius: 5px;
+-moz-border-radius-topleft: 5px;
+border-top-left-radius: 5px;
+}
+.totaux tr.first td.second{
+-webkit-border-top-right-radius: 5px;
+-moz-border-radius-topright: 5px;
+border-top-right-radius: 5px;
+}
+.totaux tr.second td.second{
+-webkit-border-bottom-right-radius: 5px;
+-moz-border-radius-bottomright: 5px;
+border-bottom-right-radius: 5px;
+}
+.totaux tr.second td.first{
+-webkit-border-bottom-left-radius: 5px;
+-moz-border-radius-bottomleft: 5px;
+border-bottom-left-radius: 5px;
+}
+
+
+
+.tableau th,.tableau td{
+    padding: 3px;
+
+    text-align: center;
+    border:1px solid #282828; 
+   
+   
+}
+.tableau th{
+       padding-top: 5px;
+          padding-bottom: 5px;
+     border-top: none;
+}
+.tableau td{
+     padding-top: 10px;
+      border-bottom: none;
+       border-left: none;
+    border-right: none;
+}
+.tab{
+    padding: 3px;
+    text-align: center;
+    border:1px solid #282828; 
+   height: 580px;
+}
 
     </style><page>
         <page_header>
             <img src="{{ asset('http://'~serverName~'/bundles/karudevsite/images/logos/logo_off.png') }}"  />
+            <p>
+            <b>{{facture.freelanceOrg.nom}}</b><br/>
+            {{facture.freelanceOrg.adresseLigne1}}<br/>
+            {{facture.freelanceOrg.cp}} {{facture.freelanceOrg.ville}}<br/>
+            Siret : {{facture.freelanceOrg.siret}}<br/>
+            Code Ape : {{facture.freelanceOrg.codeApe}} </p>
         </page_header>
 
          <table class="recap">
+      
             <tr>
-                <td>{{facture.idFreelance.idContact.civilite|upper}} {{facture.idFreelance.idContact.nom|upper}} {{facture.idFreelance.idContact.prenom|upper}}</td>
+                <td>{{facture.idFreelance.idContact.fonction}}</td>
             </tr>
-            <tr>
-                <td>{{facture.idFreelance.idContact.fonction|upper}}</td>
-            </tr>
-            <tr>
-                <td>{{facture.idFreelance.idContact.adresseLigne1|upper}}</td>
-            </tr>
-            <tr>
-                <td>{{facture.idFreelance.idContact.cp}}, {{facture.idFreelance.idContact.ville|upper}}</td>
-            </tr>
+            <tr><td><i>{{facture.idFreelance.idContact.prenom}} {{facture.idFreelance.idContact.nom}}</i></td></tr>
+           
             
         </table>
          <table class="client">
             <tr>
-                <td>{{facture.idClient.civilite|upper}} {{facture.idClient.nom|upper}} {{facture.idClient.prenom|upper}}</td>
+                <td>{{facture.idOrganisation.idDirecteur.civilite}} {{facture.idOrganisation.idDirecteur.nom}} {{facture.idOrganisation.idDirecteur.prenom}}</td>
             </tr>
             <tr>
                 <td>{{facture.idOrganisation.nom|upper}}</td>
@@ -92,32 +174,93 @@ text-align: right;
                 <td><h2>Facture FA{{facture.name}}</h2></td>
              </tr>
              <tr>
-                 <td><b>Date : {{facture.dateCreated|date('d/m/Y')}}</b></td>
+                 <td><br/><br/><b>Date : {{facture.billingDate.timestamp|date('d/m/Y')}}</b></td>
+                 <td  style="width:195px">
+                     <table class="bulle">
+                         <tr><th>MODE DE REGLEMENT</th></tr>
+                        <tr>
+                            <td>{{facture.methodpayment}}</td>
+                        </tr>
+                     </table>
+                 </td>
+                  <td style="width:195px" >
+                     <table class="bulle">
+                         <tr><th>DATE D'ECHEANCE</th></tr>
+                        <tr>
+                            <td>{{facture.paymentDelay}}</td>
+                        </tr>
+                     </table>
+                  </td>
+                  <td>
+                     <table class="bulle">
+                         <tr><th>TVA Intracommunautaire</th></tr>
+                        <tr>
+                            <td>Non assujetti &agrave; la TVA</td>
+                        </tr>
+                     </table>
+                  </td>
             </tr>
         </table>
          <hr style="clear:both" />
-        {% render 'KarudevAppsBundle:Facture:showinsertions' with {'idFacture': facture.id, 'serverName' : serverName } %} 
-
-        <table class="condition">
+         <div class="tab">
+         <table class="tableau">
             <tr>
-                <td><h4>Condition de réglement</h4></td>
+                <th style="border-left:none" >Code</th>
+                <th style="width: 377px" >Désignation</th>
+                <th>Quantité</th>
+                <th  style="width: 59px">Unité</th>
+                <th  style="width: 59px">P.U.H.T</th>
+                <th style="width: 59px;border-right:none">MT .H.T</th>
             </tr>
+            
+             {% for key,insertion in insertions %}
+            
+   
             <tr>
-                <td>
-                {% if facture.termOfPayment > 0 %} 
-                    Le délai de paiement est fixé à <b>{{facture.termOfPayment}} jours</b>, après réception de la facture.
-                {% else %}
-                    Le réglement de la facture est <b>immédiat</b>, dès sa réception.
-                {% endif %}
-                </td>
+                <td style="border-left:none">{{insertion.code}}</td>
+                <td>{{insertion.designation}}</td>
+                <td  >{{insertion.quantity}}</td>
+                 <td  >{{insertion.unit}}</td>
+                  <td style="text-align: right;">{{insertion.priceHt}} €</td>
+                <td style="text-align: right;">{{insertion.amoutHt}} €</td>
+               
             </tr>
-        </table>
+{% endfor %}
+         </table></div>
+        {#{% render 'KarudevAppsBundle:Facture:showinsertions' with {'idFacture': facture.id, 'serverName' : serverName } %} #}
+         <div style="margin-top: 10px;">
+             <b>Condition de réglement</b><br/>
+             {% if facture.termOfPayment > 0 %} 
+                    Le délai de paiement est fixé &agrave; <b>{{facture.termOfPayment}} jours</b>, après réception de la facture.<br/>
+                    La somme impayée dans le délai imparti est productive d’un intérêt de retard &agrave; un taux égal &agrave; une fois et demie le taux d’intérêt légal en vigueur &agrave; la date échéante.
+             {% else %}
+                    Paiement &agrave; la réception de la facture.
+             {% endif %}
+         </div>
+         <div style="margin-top: 10px;">
+         <b>Coordonnées bancaires</b><br/>
+         RIB : {{facture.freelanceOrg.rib}}
+         </div>
+         
+         <div style="margin-left: 573px">
+             <table   class="totaux">
+                 <tr class="first">
+                     <td  class="first"><b>TOTAL TTC</b></td>  <td class="second">7590.00 €</td>
+                 </tr>
+                  <tr class="second">
+                      <td  class="first"><b>NET A PAYER</b></td>  <td class="second">7590.00 €</td>
+                 </tr>
+             </table>
+             
+         </div>
+         <div style="margin-left: 520px;margin-top: 10px"> TVA non applicable, art. 293 B du CGI</div>
+         
         <page_footer>
-            <table>
+            {#<table>
                 <tr>
                     <td style="font-style: italic">Facture édité le {{"now"|date('d/m/Y')}} <br/>par {{facture.idFreelance.idContact.prenom}} {{facture.idFreelance.idContact.nom}}</td>
                 </tr>
-            </table>
+            </table>#}
         </page_footer>
 
     </page>

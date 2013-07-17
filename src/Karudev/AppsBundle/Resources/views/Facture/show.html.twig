@@ -5,21 +5,19 @@
             <tr>
                 <td>Client</td>
                 <td>: <b>{{facture.idOrganisation.nom}}</b></td>
-                <td>Contact Client</td>
-                <td>: {{facture.idClient.prenom}} {{facture.idClient.nom}}</td>
             </tr>
              <tr>
                 <td>Tél</td>
-                <td>: {{facture.idClient.telPro}} </td>
+                <td>: {{facture.idOrganisation.tel}} </td>
                 <td>Email</td>
-                <td>: {{facture.idClient.emailPro}}</td>
+                <td>: {{facture.idOrganisation.email}}</td>
             </tr>
             
              <tr>
                 <td>Délai de paiement </td>
                 <td>: {% if facture.termOfPayment > 0 %} {{facture.termOfPayment}} jours {% endif %}</td>
                 <td>Status</td>
-                <td>: {{facture.idFactureStatus.libelle}}</td>
+                <td>: {{facture.idFactureStatus? facture.idFactureStatus.libelle : ''}}</td>
             </tr>
             <tr>
                 

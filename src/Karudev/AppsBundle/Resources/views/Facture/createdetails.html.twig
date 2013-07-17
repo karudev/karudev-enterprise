@@ -1,16 +1,12 @@
 <section>
     <form name="facture_createdetails" action="./facture/createdetails" method="post">
         {{ form_widget(form.idFacture) }}
-        <table style="width:960px;" class="table table-striped">
+        <table class="table table-striped">
 
             <tr>
-                <td style="width:300px;">{{ form_widget(form.designation,{ 'attr': {'placeholder': 'Désignation'} })}}</td>
+                <td style="width:815px;">{{ form_widget(formInsertType.insertTypeId,{ 'attr': {'class':'input-xxlarge'} })}}</td>
                 <td style="text-align: right;width:30px;">{{ form_widget(form.quantity,{ 'attr': {'placeholder': 'Unité','class':'input-mini'} })}}</td>
-                <td style="text-align: right;width:30px;">{{ form_widget(form.grossUnitPrice,{ 'attr': {'placeholder': 'P.U','class':'input-mini'} })}}</td>
-                <td style="text-align: right;width:30px;">{{ form_widget(form.tvaRate,{ 'attr': {'placeholder': 'TVA','class':'input-mini'} })}}</td>
-                <td style="text-align: right;width:30px;" >{{ form_widget(form.discount,{ 'attr': {'placeholder': 'Remise','class':'input-mini'} })}}</td>
-                <td style="text-align: right;width:80px;">{{ form_widget(form.netUnitPrice,{ 'attr': {'placeholder': 'Montant TTC','class':'input-small'} })}}</td>
-                <td> <button class="btn btn-success" type="submit">Enregister</button></td>
+                <td style="text-align: right; width: 200px" > <button class="btn btn-success" type="submit">Enregister</button></td>
             </tr>
 
         </table>

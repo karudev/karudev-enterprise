@@ -17,12 +17,8 @@ class FactureDetailsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
    
-        $builder->add('designation', 'text');
+       
         $builder->add('quantity', 'number');
-        $builder->add('grossUnitPrice', 'number');
-        $builder->add('tvaRate', 'number');
-        $builder->add('discount', 'number');
-        $builder->add('netUnitPrice', 'number');
         if($this->idFacture!=null)
             $builder->add('idFacture', 'hidden',array('data'=>$this->idFacture));
         else

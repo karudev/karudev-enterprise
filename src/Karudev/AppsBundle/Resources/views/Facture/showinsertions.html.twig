@@ -1,31 +1,29 @@
 {% set  total_unite  =  0 %}
-{% set  total_remise  =  0 %}
-{% set  total_ttc  =  0 %}
+{% set  total_ht  =  0 %}
 <table style="min-width: 816px;" class="table table-striped">
     <thead>
         <tr>
-            <th style="width:248px;">Désignation</th>
-            <th style="text-align: right;width:45px;">Unité</th>
-            <th style="text-align: right;width:80px;">P.U</th>
-            <th style="text-align: right;width:70px;">TVA</th>
-            <th style="text-align: right;width:70px;">Remise</th>
-            <th style="text-align: right;width:107px;">Montant TTC</th>
+            <th style="width:815px;">Désignation</th>
+          
+            <th style="text-align: right;width:80px;">Unité</th>
+            <th style="text-align: right;width:80px;">P.U HT</th>
+            <th style="text-align: right;width:45px;">Quantié</th>
+            <th style="text-align: right;width:107px;">Montant HT</th>
             <th></th>
         </tr>
     </thead>
    
              {% for key,insertion in insertions %}
              {% set total_unite = total_unite + insertion.quantity %}
-             {% set total_remise = total_remise + insertion.discount %}
-             {% set total_ttc = total_ttc + insertion.netUnitPrice %}
+             {% set total_ht = total_ht + insertion.amoutHt %}
    
             <tr>
                 <td >{{insertion.designation}}</td>
-                <td style="text-align: right;" >{{insertion.quantity}}</td>
-                <td style="text-align: right;">{{insertion.grossUnitPrice|number_format('2',',',' ')}} €</td>
-                <td style="text-align: right;">{{insertion.tvaRate|number_format('2',',',' ')}} %</td>
-                <td style="text-align: right;">{{insertion.discount|number_format('2',',',' ')}} €</td>
-                <td style="text-align: right;">{{insertion.netUnitPrice|number_format('2',',',' ')}} €</td>
+               
+                <td style="text-align: right;" >{{insertion.unit}}</td>
+                <td style="text-align: right;">{{insertion.priceHt}} €</td>
+                 <td style="text-align: right;" >{{insertion.quantity}}</td>
+                <td style="text-align: right;">{{insertion.amoutHt}} €</td>
                 <td style="text-align: right;">    
                   {% if serverName == null %}  
                     <img title="Modifier"  style="cursor:pointer" src="{{ asset('bundles/karudevapps/images/divers/edit.png') }}" />
@@ -38,12 +36,47 @@
             <tr>
                 <td>TOTAL</td>
                 <td style="text-align: right;">{{total_unite}}</td>
-                <td style="text-align: right;"></td>
-                <td style="text-align: right;"></td>
-                <td style="text-align: right;">{{total_remise|number_format('2',',',' ')}} €</td>
-                <td style="text-align: right;">{{total_ttc|number_format('2',',',' ')}} €</td>
+                <td ></td>
+                <td ></td>
+                <td style="text-align: right;">{{total_ht|number_format('2',',',' ')}} €</td>
                 <td ></td>
             </tr>
             </tfoot>
             
 </table>
+
+<div>
+    <div class="span5" >
+     {% set mt_tva = total_ht * facture.tva / 100 %}
+    <table  class="recapchiffre" >
+        <thead>
+        <tr>
+            <th>BASE HT</th>
+            <th>MONTANT TVA</th>
+            <th>% TVA</th>
+            <th>TOTAUX</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align: right;">{{total_ht|number_format('2',',',' ')}} €</td>
+                <td style="text-align: right;">{{mt_tva|number_format('2',',',' ')}} €</td>
+                <td>{{facture.tva}} %</td>
+                <td style="text-align: right;">HT : {{total_ht|number_format('2',',',' ')}} €<br/>
+                    TVA : {{mt_tva|number_format('2',',',' ')}} € </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <div style="float: right">
+      <table  class="recapchiffre" >
+        
+        <tbody>
+            <tr>
+                <td>TOTAL TTC</td><td style="text-align: right;">{{(total_ht + mt_tva)|number_format('2',',',' ')}} €</td>
+                <td>NET A PAYER</td><td style="text-align: right;"><b>{{(total_ht + mt_tva)|number_format('2',',',' ')}}</b> €</td>
+            </tr>
+        </tbody>
+    </table>
+        </div>
+</div>

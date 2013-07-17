@@ -9,6 +9,8 @@ use Karudev\AppsBundle\Entity\Facture;
 use Karudev\AppsBundle\Entity\FactureDetails;
 use Karudev\AppsBundle\Form\Type\FactureType;
 use Karudev\AppsBundle\Form\Type\FactureDetailsType;
+use Karudev\AppsBundle\Form\Type\InsertTypeType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 //use Karudev\AppsBundle\Models\html2pdf;
 
 class FactureController extends Controller {
@@ -30,22 +32,22 @@ class FactureController extends Controller {
     public function createAction() {
         $request = $this->get('request');
         $facture = new Facture();
-        $form = $this->createForm(new FactureType($this->get('security.context')), $facture);
+        $em = $this->getDoctrine()->getManager();
+        $form = $this->createForm(new FactureType($this->get('security.context'),$em), $facture);
         $user = $this->get('security.context')->getToken()->getUser();
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
-            $em = $this->getDoctrine()->getManager();
             $facture->setIdOwner($user);
             $facture->setIdModifier($user);
             $facture->setIdFreelance($user);
-            $facture->setDateCreated(time());
-            $facture->setDateLastModified(time());
+            $facture->setDateCreated(new \DateTime());
+            $facture->setDateLastModified(new \DateTime());
             $facture->setIdFactureStatus($em->getRepository('KarudevAppsBundle:Facturestatus')->find(1));
             $em->persist($facture);
             $em->flush();
 
-            echo json_encode('Le facture ' . date('Y', $facture->getDateCreated()) . '-' . $facture->getId() . ' a été crée');
-            die();
+          new JsonResponse('Le facture FA' . $facture->getName() . ' a été crée');
+           
         }
         return array('form' => $form->createView());
     }
@@ -79,11 +81,19 @@ class FactureController extends Controller {
        // die(dirname(__FILE__).'/../vendor/html2pdf/html2pdf.class.php');
        // require_once(dirname(__FILE__).'/../vendor/html2pdf/html2pdf.class.php');
       // set_include_path('/usr/lib/pear');
-      
+        $l =  $this->getDoctrine()->getRepository('KarudevAppsBundle:Liencontactorganisation')->findBy(array('id_contact'=>$facture->getIdFreelance()->getIdContact()->getId()));
+       if($l[0]){
+           $facture->setFreelanceOrg($l[0]->getIdOrganisation());
+          
+       }
+        $insertions = $this->getDoctrine()->getRepository('KarudevAppsBundle:Facturedetails')->findBy(array('id_facture' =>
+            $facture)
+        );
+        
        $html = $this->get('templating')->render('KarudevAppsBundle:Facture:download.html.twig',array('facture'=>$facture,
-           'serverName' => $_SERVER['SERVER_NAME'] ));
-
-
+           'serverName' => $_SERVER['SERVER_NAME'],'insertions'=>$insertions ));
+    
+     //  \Doctrine\Common\Util\Debug::dump($facture->getFreelanceOrg()->getRib(),4); die();
       // die($html);
         try {
             $html2pdf = new \HTML2PDF('P', 'A4', 'fr');
@@ -103,11 +113,12 @@ class FactureController extends Controller {
      */
     public function showinsertionsAction($idFacture,$serverName = null) {
         $em = $this->getDoctrine()->getManager();
+        $facture = $em->getRepository('KarudevAppsBundle:Facture')->find($idFacture);
         $insertions = $em->getRepository('KarudevAppsBundle:Facturedetails')->findBy(array('id_facture' =>
-            $em->getRepository('KarudevAppsBundle:Facture')->find($idFacture))
+            $facture)
         );
         //\Doctrine\Common\Util\Debug::dump($insertions,2);die();
-        return array('insertions' => $insertions,'serverName'=>$serverName);
+        return array('insertions' => $insertions,'serverName'=>$serverName,'facture'=>$facture);
     }
 
     /**
@@ -118,20 +129,30 @@ class FactureController extends Controller {
         $request = $this->get('request');
         $factureDetails = new FactureDetails();
         $form = $this->createForm(new FactureDetailsType($idFacture), $factureDetails);
+        $formInsertType = $this->createForm(new InsertTypeType());
         if ($request->getMethod() == 'POST') {
             $facturedetails = $request->request->get('facturedetails');
+            $inserttype = $request->request->get('inserttype');
             //print_r($facturedetails); die('tet');
-
-            $form->bindRequest($request);
+        
+           // \Doctrine\Common\Util\Debug::dump($this->getDoctrine()->getRepository('KarudevAppsBundle:Facture')->find($facturedetails['idFacture'])); die();
+            $factureDetails->setIdFacture($this->getDoctrine()->getRepository('KarudevAppsBundle:Facture')->find($facturedetails['idFacture']));
+            //$form->bindRequest($request);
             $em = $this->getDoctrine()->getManager();
-            $factureDetails->setIdFacture($em->getRepository('KarudevAppsBundle:Facture')->find($facturedetails['idFacture']));
+            $insert = $this->getDoctrine()->getRepository('KarudevAppsBundle:InsertType')->find($inserttype['insertTypeId']);
+            $factureDetails->setCode($insert->getCode());
+            $factureDetails->setDesignation($insert->getDesignation());
+            $factureDetails->setPriceHt($insert->getPriceHt());
+            $factureDetails->setUnit($insert->getUnit());
+            $factureDetails->setQuantity($facturedetails['quantity']);
+            $factureDetails->setAmoutHt($insert->getPriceHt()*$facturedetails['quantity']);
             $em->persist($factureDetails);
             $em->flush();
 
             // echo json_encode('Le facture '.date('Y',$facture->getDateCreated()). '-'. $facture->getId().' a été crée');
-            die();
+          new JsonResponse();
         }
-        return array('form' => $form->createView());
+        return array('form' => $form->createView(),'formInsertType'=>$formInsertType->createView());
     }
 
 }

@@ -42,40 +42,32 @@ class Facturedetails
     private $quantity;
 
     /**
-     * @var float
+     * @var string
      *
-     * @ORM\Column(name="gross_unit_price", type="float")
+     * @ORM\Column(name="code", type="string", length=8)
      */
-    private $gross_unit_price;
+    private $code;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="unit", type="string", length=64)
+     */
+    private $unit;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="discount", type="float")
+     * @ORM\Column(name="price_ht", type="decimal",length= 10, scale= 2)
      */
-    private $discount;
-
+    private $price_ht;
+    
     /**
      * @var float
      *
-     * @ORM\Column(name="net_unit_price", type="float")
+     * @ORM\Column(name="amout_ht", type="decimal",length= 10, scale= 2)
      */
-    private $net_unit_price;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="tva_rate", type="float")
-     */
-    private $tva_rate;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="amount", type="float", nullable = true)
-     */
-    private $amount;
-
+    private $amout_ht;
 
     /**
      * Get id
@@ -85,29 +77,6 @@ class Facturedetails
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set id_facture
-     *
-     * @param integer $idFacture
-     * @return Facturedetails
-     */
-    public function setIdFacture($idFacture)
-    {
-        $this->id_facture = $idFacture;
-    
-        return $this;
-    }
-
-    /**
-     * Get id_facture
-     *
-     * @return integer 
-     */
-    public function getIdFacture()
-    {
-        return $this->id_facture;
     }
 
     /**
@@ -157,117 +126,117 @@ class Facturedetails
     }
 
     /**
-     * Set gross_unit_price
+     * Set code
      *
-     * @param float $grossUnitPrice
+     * @param string $code
      * @return Facturedetails
      */
-    public function setGrossUnitPrice($grossUnitPrice)
+    public function setCode($code)
     {
-        $this->gross_unit_price = $grossUnitPrice;
+        $this->code = $code;
     
         return $this;
     }
 
     /**
-     * Get gross_unit_price
+     * Get code
      *
-     * @return float 
+     * @return string 
      */
-    public function getGrossUnitPrice()
+    public function getCode()
     {
-        return $this->gross_unit_price;
+        return $this->code;
     }
 
     /**
-     * Set discount
+     * Set unit
      *
-     * @param float $discount
+     * @param string $unit
      * @return Facturedetails
      */
-    public function setDiscount($discount)
+    public function setUnit($unit)
     {
-        $this->discount = $discount;
+        $this->unit = $unit;
     
         return $this;
     }
 
     /**
-     * Get discount
+     * Get unit
      *
-     * @return float 
+     * @return string 
      */
-    public function getDiscount()
+    public function getUnit()
     {
-        return $this->discount;
+        return $this->unit;
     }
 
     /**
-     * Set net_unit_price
+     * Set price_ht
      *
-     * @param float $netUnitPrice
+     * @param float $priceHt
      * @return Facturedetails
      */
-    public function setNetUnitPrice($netUnitPrice)
+    public function setPriceHt($priceHt)
     {
-        $this->net_unit_price = $netUnitPrice;
+        $this->price_ht = $priceHt;
     
         return $this;
     }
 
     /**
-     * Get net_unit_price
+     * Get price_ht
      *
      * @return float 
      */
-    public function getNetUnitPrice()
+    public function getPriceHt()
     {
-        return $this->net_unit_price;
+        return $this->price_ht;
     }
 
     /**
-     * Set tva_rate
+     * Set id_facture
      *
-     * @param float $tvaRate
+     * @param \Karudev\AppsBundle\Entity\Facture $idFacture
      * @return Facturedetails
      */
-    public function setTvaRate($tvaRate)
+    public function setIdFacture(\Karudev\AppsBundle\Entity\Facture $idFacture)
     {
-        $this->tva_rate = $tvaRate;
+        $this->id_facture = $idFacture;
     
         return $this;
     }
 
     /**
-     * Get tva_rate
+     * Get id_facture
      *
-     * @return float 
+     * @return \Karudev\AppsBundle\Entity\Facture 
      */
-    public function getTvaRate()
+    public function getIdFacture()
     {
-        return $this->tva_rate;
+        return $this->id_facture;
     }
 
     /**
-     * Set amount
+     * Set amout_ht
      *
-     * @param float $amount
+     * @param float $amoutHt
      * @return Facturedetails
      */
-    public function setAmount($amount)
+    public function setAmoutHt($amoutHt)
     {
-        $this->amount = $amount;
+        $this->amout_ht = $amoutHt;
     
         return $this;
     }
 
     /**
-     * Get amount
+     * Get amout_ht
      *
      * @return float 
      */
-    public function getAmount()
+    public function getAmoutHt()
     {
-        return $this->amount;
+        return $this->amout_ht;
     }
 }

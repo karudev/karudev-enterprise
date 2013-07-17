@@ -15,9 +15,9 @@
 	    	<tr>
 	    		<td class="voir" >#FA{{facture.name}}</td>
 	    		<td>{{facture.dateCreated|date('d/m/Y')}}</td>
-	    		<td>{{facture.idOrganisation.nom}}</td>
+	    		<td>{{facture.idOrganisation ? facture.idOrganisation.nom : ''}}</td>
 	    		<td>{% if facture.termOfPayment > 0 %} {{facture.termOfPayment}} jours {% endif %}</td>
-                        <td>{{facture.idFactureStatus.libelle}}</td>
+                        <td>{{facture.idFactureStatus ? facture.idFactureStatus.libelle : ''}}</td>
 	    		<td>
                             <a target="_blank" href="./facture/download/{{facture.id}}" ><img class="print" title="Télécharger la facture"  style="cursor:pointer" src="{{ asset('bundles/karudevapps/images/divers/pdf.png') }}" /></a>
                             <img rel="./facture/show/{{facture.id}}" class="edit" title="Modifier"  style="cursor:pointer" src="{{ asset('bundles/karudevapps/images/divers/edit.png') }}" />

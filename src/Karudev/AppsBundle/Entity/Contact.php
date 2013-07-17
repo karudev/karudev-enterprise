@@ -22,6 +22,7 @@ class Contact
      * @ORM\OneToMany(targetEntity="Liencontactorganisation", mappedBy="id_contact")
      */
     private $id;
+    
 
     /**
      * @var integer $idOwner
@@ -219,6 +220,9 @@ class Contact
     public function __construct()
 {
     $this->id = new ArrayCollection();
+}
+public function __toString() {
+    return $this->getNom().' '.$this->getPrenom();
 }
 
     /**
@@ -862,5 +866,28 @@ class Contact
     public function getNomComplet()
     {
         return $this->prenom.' '.$this->nom;
+    }
+
+    /**
+     * Set lienContactOrg
+     *
+     * @param \Karudev\AppsBundle\Entity\Liencontactorganisation $lienContactOrg
+     * @return Contact
+     */
+    public function setLienContactOrg(\Karudev\AppsBundle\Entity\Liencontactorganisation $lienContactOrg = null)
+    {
+        $this->lienContactOrg = $lienContactOrg;
+    
+        return $this;
+    }
+
+    /**
+     * Get lienContactOrg
+     *
+     * @return \Karudev\AppsBundle\Entity\Liencontactorganisation 
+     */
+    public function getLienContactOrg()
+    {
+        return $this->lienContactOrg;
     }
 }

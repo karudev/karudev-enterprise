@@ -10,3 +10,12 @@
     padding :5px;
     width: 150px;
 }
+.recapchiffre{
+margin: 5px;
+}
+.recapchiffre td,.recapchiffre th{
+    border: 1px solid #ccc;
+    padding: 5px;
+    
+
+}

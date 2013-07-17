@@ -12,6 +12,11 @@
 			<h3>Création d'une nouvelle organisation</h3>
 				<form name="organisation" method="post" >
 					<table>
+                                               <tr>
+							<td>Directeur / Gérant : </td>
+							<td>{{ form_widget(form.idDirecteur)}}</td>
+                                                        
+						</tr>
 						<tr>
 							<td>Nom : </td>
 							<td>{{ form_widget(form.nom)}}</td>
@@ -68,6 +73,10 @@
                                                 <tr>
 							<td>Description : </td>
                                                         <td colspan="3">{{ form_widget(form.description,{ 'attr': {'class': 'input-xxlarge'} })}}</td>
+						</tr>
+                                                <tr>
+							<td>Rib : </td>
+                                                        <td>{{ form_widget(form.rib)}}</td>
 						</tr>
 						<tr>
 							<td></td>

@@ -18,8 +18,9 @@ class OrganisationController extends Controller
     {
     	$request = $this->get('request');
     	$organisation = new Organisation();
-    	$form = $this->createForm(new OrganisationType(),$organisation);
-    	$user = $this->get('security.context')->getToken()->getUser();
+        $user = $this->get('security.context')->getToken()->getUser();
+    	$form = $this->createForm(new OrganisationType($user),$organisation);
+    	
     	if($request->getMethod() == 'POST')
     	{
     		$form->bindRequest($request);
