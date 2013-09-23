@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Liencontactorganisation
  *
- * @ORM\Table(name="Liencontactorganisation")
+ * @ORM\Table(name="liencontactorganisation")
  * @ORM\Entity(repositoryClass="Karudev\AppsBundle\Entity\LiencontactorganisationRepository")
  */
 class Liencontactorganisation

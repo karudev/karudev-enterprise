@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Lea\PrestaBundle\Entity\Organisation
  *
- * @ORM\Table(name="Organisation")
+ * @ORM\Table(name="organisation")
  * @ORM\Entity(repositoryClass="Karudev\AppsBundle\Entity\OrganisationRepository")
  */
 class Organisation
@@ -716,7 +716,44 @@ class Organisation
     {
         return substr($this->rib, 0,5).' '.substr($this->rib, 5,5).' '.substr($this->rib, 10,11).' '.substr($this->rib, 21,2);
     }
-
+    
+    /**
+     * 
+     *
+     * @return string 
+     */
+    public function getBankNumber()
+    {
+        return substr($this->rib, 0,5);
+    }
+    
+     /**
+     * 
+     *
+     * @return string 
+     */
+    public function getGuichetNumber()
+    {
+        return substr($this->rib, 5,5);
+    }
+    /**
+     * 
+     *
+     * @return string 
+     */
+    public function getAccountNumber()
+    {
+        return substr($this->rib, 10,11);
+    }
+     /**
+     * 
+     *
+     * @return string 
+     */
+    public function getKeyNumber()
+    {
+        return substr($this->rib, 21,2);
+    }
     /**
      * Set codeApe
      *

@@ -1,0 +1,27 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+
+            <th>Type de dépense</th>
+            <th>Date de création</th>
+            <th>Date Comptable</th>
+            <th>Montant HT</th>
+            <th>Montant TVA</th>
+            <th>Montant TTC</th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for expense in expenses %}
+        <tr>
+            <td>{{expense.expenseTypeId.designation}}</td>
+            <td>{{expense.dateCreated|date('d/m/Y')}}</td>
+            <td>{{expense.expenseDate|date('d/m/Y')}}</td>
+            <td>{{expense.amountHt}} €</td>
+            <td>{{expense.amountTva > 0 ? expense.amountTva~'  €' : '' }}</td>
+            <td>{{expense.amountTtc}} €</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

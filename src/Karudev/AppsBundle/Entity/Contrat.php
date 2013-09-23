@@ -9,7 +9,7 @@ use Karudev\AppsBundle\Models\Dt;
 /**
  * Contrat
  *
- * @ORM\Table(name="Contrat")
+ * @ORM\Table(name="contrat")
  * @ORM\Entity(repositoryClass="Karudev\AppsBundle\Entity\ContratRepository")
  */
 class Contrat

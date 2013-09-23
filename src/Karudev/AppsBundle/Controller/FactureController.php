@@ -6,12 +6,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Karudev\AppsBundle\Entity\Facture;
-use Karudev\AppsBundle\Entity\FactureDetails;
+use Karudev\AppsBundle\Entity\Facturedetails;
 use Karudev\AppsBundle\Form\Type\FactureType;
 use Karudev\AppsBundle\Form\Type\FactureDetailsType;
 use Karudev\AppsBundle\Form\Type\InsertTypeType;
 use Symfony\Component\HttpFoundation\JsonResponse;
-//use Karudev\AppsBundle\Models\html2pdf;
+
 
 class FactureController extends Controller {
 
@@ -31,6 +31,7 @@ class FactureController extends Controller {
      */
     public function createAction() {
         $request = $this->get('request');
+        $f = $request->get('facture');
         $facture = new Facture();
         $em = $this->getDoctrine()->getManager();
         $form = $this->createForm(new FactureType($this->get('security.context'),$em), $facture);
@@ -40,6 +41,7 @@ class FactureController extends Controller {
             $facture->setIdOwner($user);
             $facture->setIdModifier($user);
             $facture->setIdFreelance($user);
+            $facture->setBillingDate(new \DateTime($f['billingDate']));
             $facture->setDateCreated(new \DateTime());
             $facture->setDateLastModified(new \DateTime());
             $facture->setIdFactureStatus($em->getRepository('KarudevAppsBundle:Facturestatus')->find(1));
@@ -77,9 +79,9 @@ class FactureController extends Controller {
      * 
      */
     public function downloadAction(Facture $facture) {
-        
+       
        // die(dirname(__FILE__).'/../vendor/html2pdf/html2pdf.class.php');
-       // require_once(dirname(__FILE__).'/../vendor/html2pdf/html2pdf.class.php');
+        require_once(__DIR__.'/../Models/html2pdf/html2pdf.class.php');
       // set_include_path('/usr/lib/pear');
         $l =  $this->getDoctrine()->getRepository('KarudevAppsBundle:Liencontactorganisation')->findBy(array('id_contact'=>$facture->getIdFreelance()->getIdContact()->getId()));
        if($l[0]){

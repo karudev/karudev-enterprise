@@ -1,11 +1,10 @@
 {% extends "::base.html.twig" %}
 {% block header %}
-<h2>...Conseil et Développements Web sur mesure!</h2>
+<h2>...Conseils et Développements Web sur mesure!</h2>
 <p>Karudev propose de prendre en charge vos projets web spécifiques, de faibles ou grandes complexités.<p>
 <p><b>Consultant Développeur Web</b>, je développe des applications web et sites en PHP5.x, MYSQL5/ORACLE, HTML5/CSS3, JQUERY et utilise divers frameworks ( SYMFONY2, ZEND )
     afin de gagner en temps, stabilité et sécurité.<p>
-<p>Vous souhaitez visualiser votre activité avec des statistiques ? Pas de problème, je vous développe des interfaces composées de divers graphiques de statistiques en utlisant les librairies javascript
-    <a target="_blank" href="http://www.highcharts.com">Highchart et Highstock</a>.</p>
+<p>Si vous aimez l'exigence et la qualité pour vos applications, je code également les tests unitaires.</p>
 
 {% endblock %}
 {% block body %}
@@ -13,7 +12,7 @@
 
 <article>
     <section  style="text-align:center" >
-        <img class="photo" title="Dolyveen Renault, Développeur Web Paris et Dom-Tom" alt="Présentation" src="{{ asset('bundles/karudevsite/images/photos/moi.jpg') }}" />
+        <img style="margin-left: 50%" class="photo" title="Dolyveen Renault, Développeur Web Paris et Dom-Tom" alt="Présentation" src="{{ asset('bundles/karudevsite/images/photos/moi.jpg') }}" />
     </section>
     <section >
         <h2> ...L'entreprise en quelques mots</h2>
@@ -72,8 +71,16 @@
     </ul>
 
 </article>
+<div style="clear: both" > 
+    <h2> ...Projet récemment terminé : D2P EVASION</h2>
+    <div class="span8 offset1">
+        <figure><a target="_blank" href="http://d2p-evasion.com"><img title="D2P, Galeries / Evènement carnaval de londre 2013" alt="D2P, Galeries / Evènement carnaval de londre 2013" src="{{ asset('bundles/karudevsite/images/prestations/screen_home.jpg') }}" /></a>
+            <figcaption>Projet en collaboration avec <a target="_blank" href="http://haroldgene.com">Harold GENE, Directeur Artistique</a></figcaption>
+        </figure>
+    </div>
+</div>
 <div class="span12">
-    <h2> ...Ils m'ont fait confiance pour leurs projets</h2>
+    <h2> ...Ils m'ont fait confiance</h2>
     <div class="row-fluid">
         <div class="span5">
             <figure><a target="_blank" href="http://www.prismamedia.com"><img  style="height:50px"  src="{{ asset('bundles/karudevsite/images/logos/prisma.jpg') }}" /></a></figure>
@@ -100,7 +107,7 @@
             </figure>
             <p>Projet en cours : </p>
             <p><img  style="height:25px"  src="{{ asset('bundles/karudevsite/images/logos/heyvent.png') }}" /> social and events....</p>
-            <p><a target="_blank" href="http://91.121.93.223/aa/web/app_dev.php">D2P EVASION ( Association Antillaise)</a> :
+            <p><a target="_blank" href="http://d2p.karudev.fr">D2P EVASION (Association Antillaise)</a> :
             <p>Développement site web d'une association organisant des voyages et évènements festifs, comprenant une partie blog, galerie photos et admin.</p>
             <p>Environnement Technique : Symfony2/PHP5 , JQUERY, MYSQL, HTML5/CSS3, responsive design</p></article>
         </div>

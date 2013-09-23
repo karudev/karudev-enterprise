@@ -16,3 +16,7 @@ karudev_site:
 #_internal:
 #    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
 #    prefix:   /_internal
+
+karudev_apps_routing:
+    resource: "@KarudevAppsBundle/Resources/config/routing.yml"
+    prefix:   /

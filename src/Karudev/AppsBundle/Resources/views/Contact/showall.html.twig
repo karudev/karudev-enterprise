@@ -24,7 +24,7 @@
 	    	</tr>
                 <tr class="details">
                     <td colspan="6">
-                     {% render 'KarudevAppsBundle:Contact:show' with{'id': contact.id } %}
+                     {{ render(controller('KarudevAppsBundle:Contact:show',{'id': contact.id })) }}
                     </td>
                 </tr>
 	    {% endfor %}	

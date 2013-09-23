@@ -1,0 +1,9 @@
+<h3>Nouvelle dépense</h3>
+<form action="{{path('_apps_enterprise_depense_add')}}" method="post" >
+    <div>{{form_widget(form.expenseTypeId)}}</div>
+    <div>{{form_widget(form.expenseDate)}}</div>
+    <div>{{form_widget(form.amountHt)}} €</div>
+    <div>{{form_widget(form.amountTtc)}} €</div>
+    <div>{{form_widget(form.comments)}}</div>
+    <div><button class="btn btn-small">Enregistrer</button></div>
+</form>

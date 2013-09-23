@@ -11,7 +11,7 @@
         <meta content="Karudev : Freelance Php, Développeur d'appliquations web Symfony2 / Zend Framework Paris et Dom-Tom" name="Generator">
         <meta content="Renault Dolyveen" name="author">
         <meta content="index, follow" name="robots">
-        <title>{% block title %}Karudev Enterprise : Applications CRM en ligne pour les entrepreneurs et Freelances{% endblock %}</title>
+        <title>{% block title %}Karudev Enterprise : Application CRM en ligne pour les entrepreneurs et Freelances{% endblock %}</title>
         <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -65,6 +65,7 @@
                                 <li class=""><a href="{{ path('_apps_enterprise_contact') }}">Contact</a></li>
                                 <li class=""><a href="{{ path('_apps_enterprise_organisation') }}">Organisation</a></li>
                                 <li class=""><a href="{{ path('_apps_enterprise_contrat') }}">Contrat</a></li>
+                                <li class=""><a href="{{ path('_apps_enterprise_depense') }}">Dépense</a></li>
                                 <li class=""><a href="{{ path('_apps_enterprise_facture') }}">Facture</a></li>
                                 <li class="dropdown">
                                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">Compte de <b>{{ app.user.idContact.prenom }} {{ app.user.idContact.nom }}</b> <b class="caret"></b></a>
@@ -103,7 +104,7 @@
                 <footer>
                     <p>©2009 - 2013 <a href="http://karudev.fr">Karudev.fr</a> , Tous droits réservés | <a href="{{ path('_contact') }}">Contact</a> </p>
 
-                    <p>Karudev Enterprise :  Appliquations CRM en ligne pour les entrepreneurs et Freelances</p>
+                    <p>Karudev Enterprise :  Application CRM en ligne pour les entrepreneurs et Freelances</p>
                 </footer>
      {% endblock %}
                 <!-- Le javascript

@@ -29,10 +29,10 @@
     </section>
     <section >
         
-             {% render 'KarudevAppsBundle:Facture:showinsertions' with {'idFacture': facture.id} %} 
+             {{ render(controller('KarudevAppsBundle:Facture:showinsertions', {'idFacture': facture.id})) }} 
             
     </section>
-    {% render 'KarudevAppsBundle:Facture:createdetails' with {'idFacture': facture.id} %}
+    {{ render(controller('KarudevAppsBundle:Facture:createdetails',{'idFacture': facture.id} )) }}
     <section>
         <button class="btn">Nouvelle insertion</button>
     </section>

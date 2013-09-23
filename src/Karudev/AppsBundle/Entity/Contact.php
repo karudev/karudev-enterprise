@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Contact
  *
- * @ORM\Table(name="Contact")
+ * @ORM\Table(name="contact")
  * @ORM\Entity
  */
 class Contact

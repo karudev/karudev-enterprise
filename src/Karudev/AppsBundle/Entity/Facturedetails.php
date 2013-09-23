@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Facturedetails
  *
- * @ORM\Table(name="Facturedetails")
+ * @ORM\Table(name="facturedetails")
  * @ORM\Entity(repositoryClass="Karudev\AppsBundle\Entity\FacturedetailsRepository")
  */
 class Facturedetails
@@ -35,9 +35,9 @@ class Facturedetails
     private $designation;
 
     /**
-     * @var integer
+     * @var float
      *
-     * @ORM\Column(name="quantity", type="integer")
+     * @ORM\Column(name="quantity", type="decimal",length= 10, scale= 2)
      */
     private $quantity;
 

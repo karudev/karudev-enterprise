@@ -35,7 +35,7 @@ table {
 }
 table.client{
 right : 225px;
-margin-top:-65px;
+margin-top:-20px;
 
 position : relative;
 
@@ -130,7 +130,13 @@ border-bottom-left-radius: 5px;
     padding: 3px;
     text-align: center;
     border:1px solid #282828; 
-   height: 580px;
+   height: 480px;
+}
+.rib{
+margin-left:-5px;
+}
+.rib th,.rib td{
+padding : 5px;
 }
 
     </style><page>
@@ -154,9 +160,7 @@ border-bottom-left-radius: 5px;
             
         </table>
          <table class="client">
-            <tr>
-                <td>{{facture.idOrganisation.idDirecteur.civilite}} {{facture.idOrganisation.idDirecteur.nom}} {{facture.idOrganisation.idDirecteur.prenom}}</td>
-            </tr>
+           
             <tr>
                 <td>{{facture.idOrganisation.nom|upper}}</td>
             </tr>
@@ -212,9 +216,9 @@ border-bottom-left-radius: 5px;
                 <th  style="width: 59px">P.U.H.T</th>
                 <th style="width: 59px;border-right:none">MT .H.T</th>
             </tr>
-            
+             {% set totalTTC = 0%}
              {% for key,insertion in insertions %}
-            
+             {% set totalTTC = totalTTC + insertion.amoutHt%}
    
             <tr>
                 <td style="border-left:none">{{insertion.code}}</td>
@@ -229,7 +233,7 @@ border-bottom-left-radius: 5px;
          </table></div>
         {#{% render 'KarudevAppsBundle:Facture:showinsertions' with {'idFacture': facture.id, 'serverName' : serverName } %} #}
          <div style="margin-top: 10px;">
-             <b>Condition de réglement</b><br/>
+             <b>Condition de réglement</b><br/><br/>
              {% if facture.termOfPayment > 0 %} 
                     Le délai de paiement est fixé &agrave; <b>{{facture.termOfPayment}} jours</b>, après réception de la facture.<br/>
                     La somme impayée dans le délai imparti est productive d’un intérêt de retard &agrave; un taux égal &agrave; une fois et demie le taux d’intérêt légal en vigueur &agrave; la date échéante.
@@ -237,18 +241,32 @@ border-bottom-left-radius: 5px;
                     Paiement &agrave; la réception de la facture.
              {% endif %}
          </div>
-         <div style="margin-top: 10px;">
-         <b>Coordonnées bancaires</b><br/>
-         RIB : {{facture.freelanceOrg.rib}}
+         <div style="margin-top: 20px;">
+         <b>Coordonnées bancaires</b><br/><br/>
+         <table class="rib">
+            <tr>
+                <th><b>Banque</b></th>
+                <th><b>Guichet</b></th>
+                <th><b>Numéro de compte</b></th>
+                <th><b>Clé</b></th>
+            </tr>
+            <tr>
+                <td>{{facture.freelanceOrg.bankNumber}}</td>
+                <td>{{facture.freelanceOrg.guichetNumber}}</td>
+                <td>{{facture.freelanceOrg.AccountNumber}}</td>
+                <td>{{facture.freelanceOrg.keyNumber}}</td>
+            </tr>
+         </table>
+         
          </div>
          
          <div style="margin-left: 573px">
              <table   class="totaux">
                  <tr class="first">
-                     <td  class="first"><b>TOTAL TTC</b></td>  <td class="second">7590.00 €</td>
+                     <td  class="first"><b>TOTAL TTC</b></td>  <td class="second">{{totalTTC|number_format('2',',',' ')}} €</td>
                  </tr>
                   <tr class="second">
-                      <td  class="first"><b>NET A PAYER</b></td>  <td class="second">7590.00 €</td>
+                      <td  class="first"><b>NET A PAYER</b></td>  <td class="second">{{totalTTC|number_format('2',',',' ')}} €</td>
                  </tr>
              </table>
              

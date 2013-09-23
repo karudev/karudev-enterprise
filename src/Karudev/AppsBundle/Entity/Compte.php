@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Karudev\AppsBundle\Entity\Compte
  *
- * @ORM\Table(name="Compte")
+ * @ORM\Table(name="compte")
  * @ORM\Entity
  */
 class Compte implements UserInterface
