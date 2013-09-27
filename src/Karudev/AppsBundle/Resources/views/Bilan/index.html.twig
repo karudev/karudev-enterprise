@@ -1,0 +1,19 @@
+{% extends "KarudevAppsBundle::layout.html.twig" %}
+{% block stylesheets %}
+
+{% endblock %}
+{% block body %}
+<div>
+    <h3>Gestions des dépenses</h3>
+</div>
+<div><button class="btn btn-small">Nouvelle dépense</button></div>
+<div>
+    <div class="span8">
+      {{ render(controller('KarudevAppsBundle:Depense:show'))}}
+    </div>
+    <div class="span3">
+        {{ render(controller('KarudevAppsBundle:Depense:add'))}}
+    </div>
+    
+</div>
+{% endblock %}

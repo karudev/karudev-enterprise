@@ -14,7 +14,7 @@ namespace Symfony\Component\HttpFoundation\Tests;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class ResponseTest extends \PHPUnit_Framework_TestCase
+class ResponseTest extends ResponseTestCase
 {
     public function testCreate()
     {
@@ -700,6 +700,11 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     protected function createDateTimeNow()
     {
         return new \DateTime();
+    }
+
+    protected function provideResponse()
+    {
+        return new Response();
     }
 }
 
