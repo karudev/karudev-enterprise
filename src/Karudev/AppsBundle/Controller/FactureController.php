@@ -37,7 +37,7 @@ class FactureController extends Controller {
         $form = $this->createForm(new FactureType($this->get('security.context'),$em), $facture);
         $user = $this->get('security.context')->getToken()->getUser();
         if ($request->getMethod() == 'POST') {
-            $form->bindRequest($request);
+            $form->submit($request);
             $facture->setIdOwner($user);
             $facture->setIdModifier($user);
             $facture->setIdFreelance($user);

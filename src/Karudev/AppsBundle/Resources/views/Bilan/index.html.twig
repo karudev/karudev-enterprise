@@ -4,16 +4,55 @@
 {% endblock %}
 {% block body %}
 <div>
-    <h3>Gestions des dépenses</h3>
+    <h3>Bilan comptables</h3>
 </div>
-<div><button class="btn btn-small">Nouvelle dépense</button></div>
+
 <div>
-    <div class="span8">
-      {{ render(controller('KarudevAppsBundle:Depense:show'))}}
-    </div>
-    <div class="span3">
-        {{ render(controller('KarudevAppsBundle:Depense:add'))}}
-    </div>
-    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Désignation</th>
+                <th style="text-align: center">Date</th>
+                <th style="text-align: right">Dépenses</th>
+                <th style="text-align: right">Crédits</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% set total_amount = 0 %}
+            {% set total_credits = 0 %}
+            {% set total_expenses = 0 %}
+        {% for row in data %}
+            {% if row.credits is defined %}
+             {% set total_credits = total_credits + row.credits %}
+            {% endif %}
+             {% if row.expenses is defined %}
+             {% set total_expenses = total_expenses + row.expenses %}
+            {% endif %}
+            <tr>
+                <td></td> 
+                <td>{{is_numeric(row.lib) ? 'Facture : #FA'~padLeft(row.lib,4) : row.expensetype~' : '~row.lib }}</td>
+                <td style="text-align: center">{{row.date_cpt.timestamp|date('d/m/Y')}}</td>
+                <td style="text-align: right;color:red">{{row.expenses is defined ? row.expenses|number_format('2',',',' ')~' €'}}</td>
+                <td style="text-align: right">{{row.credits is defined ? row.credits|number_format('2',',',' ')~' €'}}</td>
+                <td></td>
+            </tr>
+        {% endfor %}
+          {% set total_amount = total_credits + total_expenses %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td><b>TOTAL</b></td>
+                <td></td>
+                <td></td>
+                <td style="text-align: right;color:red">{{total_expenses|number_format('2',',',' ')~' €'}}</td>
+                <td style="text-align: right;color:green">{{total_credits|number_format('2',',',' ')~' €'}}</td>
+                <td style="text-align: right;color:{{total_amount <0 ? 'red"' :'green'}}"><b>{{total_amount|number_format('2',',',' ')}} €</b></td>
+            </tr>
+        </tfoot>
+    </table>
+
+
 </div>
 {% endblock %}

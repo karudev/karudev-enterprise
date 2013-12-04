@@ -23,7 +23,7 @@ class ContratController extends Controller
     	$user = $this->get('security.context')->getToken()->getUser();
     	if($request->getMethod() == 'POST')
     	{
-    		$form->bindRequest($request);
+    		$form->handleRequest($request);
     		$em = $this->getDoctrine()->getManager();
     		$contrat->setIdFreelance($user);
     		$contrat->setIdOwner($user->getId());

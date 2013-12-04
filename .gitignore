@@ -1,5 +1,9 @@
 /nbproject
+
 /app/cache/
+
 /app/logs/
-/vendor
+
+
 /app/config/parameters.yml
+/vendor

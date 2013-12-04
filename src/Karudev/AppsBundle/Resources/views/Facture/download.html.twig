@@ -130,7 +130,7 @@ border-bottom-left-radius: 5px;
     padding: 3px;
     text-align: center;
     border:1px solid #282828; 
-   height: 480px;
+   height: 460px;
 }
 .rib{
 margin-left:-5px;
@@ -152,11 +152,14 @@ padding : 5px;
 
          <table class="recap">
       
+            
+            <tr><td><i>{{facture.idFreelance.idContact.prenom}} {{facture.idFreelance.idContact.nom}}</i></td></tr>
             <tr>
                 <td>{{facture.idFreelance.idContact.fonction}}</td>
             </tr>
-            <tr><td><i>{{facture.idFreelance.idContact.prenom}} {{facture.idFreelance.idContact.nom}}</i></td></tr>
-           
+            <tr>
+                <td>{{facture.idFreelance.idContact.emailPro}}</td>
+            </tr>
             
         </table>
          <table class="client">

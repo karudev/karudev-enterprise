@@ -2,18 +2,14 @@ _home:
     pattern:  /
     defaults: { _controller: KarudevSiteBundle:Default:index }
 
+_demo:
+    pattern:  /demo
+    defaults: { _controller: KarudevSiteBundle:Demo:index }
+
 _contact:
     pattern:  /contact
     defaults: { _controller: KarudevSiteBundle:Default:contact }
-
-_profil:
-    pattern:  /profil
-    defaults: { _controller: KarudevSiteBundle:Default:profil }
- 
-_disponibilite:
-    pattern:  /disponibilite
-    defaults: { _controller: KarudevSiteBundle:Default:disponibilite }
-    
+   
 _apps_enterprise_login:
     pattern:  /enterprise/login
     defaults: { _controller: KarudevAppsBundle:Default:login }
@@ -92,3 +88,9 @@ _apps_enterprise_depense:
 _apps_enterprise_depense_add:
     pattern:  /enterprise/depense/add
     defaults: { _controller: KarudevAppsBundle:Depense:add }
+    
+_apps_enterprise_bilan:
+    pattern:  /enterprise/bilan
+    defaults: { _controller: KarudevAppsBundle:Bilan:index }
+    
+    

@@ -1,0 +1,429 @@
+<?php
+
+namespace Karudev\AppsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Devis
+ *
+ * @ORM\Table(name="devis")
+ * @ORM\Entity(repositoryClass="Karudev\AppsBundle\Entity\DevisRepository")
+ */
+class Devis
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="devis_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="project_name", type="string", length=128)
+     */
+    private $projectName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_created", type="date")
+     */
+    private $dateCreated;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_last_updated", type="date")
+     */
+    private $dateLastUpdated;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="Compte", inversedBy="Devis")
+     * @ORM\JoinColumn(name="owner_id", referencedColumnName="id_compte")
+     *
+     */
+    private $ownerId;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="Compte", inversedBy="Devis")
+     * @ORM\JoinColumn(name="modifier_id", referencedColumnName="id_compte")
+     *
+     */
+    private $modifierId;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="Contact", inversedBy="Devis")
+     * @ORM\JoinColumn(name="client_id", referencedColumnName="id_contact")
+     *
+     */
+    private $clientId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="amount_ht", type="decimal")
+     */
+    private $amountHt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="amount_ttc", type="decimal")
+     */
+    private $amountTtc;
+    
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="MethodPayment", inversedBy="Devis")
+     * @ORM\JoinColumn(name="methodpayment_id", referencedColumnName="methodpayment_id")
+     *
+     */
+    private $methodPaymentId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="regulation_provided", type="string", length=255)
+     */
+    private $regulationProvided;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="delivery_time", type="integer")
+     */
+    private $deliveryTime;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="delivery_time_unit", type="string", length=16)
+     */
+    private $deliveryTimeUnit;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set projectName
+     *
+     * @param string $projectName
+     * @return Devis
+     */
+    public function setProjectName($projectName)
+    {
+        $this->projectName = $projectName;
+
+        return $this;
+    }
+
+    /**
+     * Get projectName
+     *
+     * @return string 
+     */
+    public function getProjectName()
+    {
+        return $this->projectName;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Devis
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set dateCreated
+     *
+     * @param \DateTime $dateCreated
+     * @return Devis
+     */
+    public function setDateCreated($dateCreated)
+    {
+        $this->dateCreated = $dateCreated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCreated
+     *
+     * @return \DateTime 
+     */
+    public function getDateCreated()
+    {
+        return $this->dateCreated;
+    }
+
+    /**
+     * Set dateLastUpdated
+     *
+     * @param \DateTime $dateLastUpdated
+     * @return Devis
+     */
+    public function setDateLastUpdated($dateLastUpdated)
+    {
+        $this->dateLastUpdated = $dateLastUpdated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateLastUpdated
+     *
+     * @return \DateTime 
+     */
+    public function getDateLastUpdated()
+    {
+        return $this->dateLastUpdated;
+    }
+
+    /**
+     * Set ownerId
+     *
+     * @param integer $ownerId
+     * @return Devis
+     */
+    public function setOwnerId($ownerId)
+    {
+        $this->ownerId = $ownerId;
+
+        return $this;
+    }
+
+    /**
+     * Get ownerId
+     *
+     * @return integer 
+     */
+    public function getOwnerId()
+    {
+        return $this->ownerId;
+    }
+
+    /**
+     * Set modifierId
+     *
+     * @param integer $modifierId
+     * @return Devis
+     */
+    public function setModifierId($modifierId)
+    {
+        $this->modifierId = $modifierId;
+
+        return $this;
+    }
+
+    /**
+     * Get modifierId
+     *
+     * @return integer 
+     */
+    public function getModifierId()
+    {
+        return $this->modifierId;
+    }
+
+    /**
+     * Set clientId
+     *
+     * @param integer $clientId
+     * @return Devis
+     */
+    public function setClientId($clientId)
+    {
+        $this->clientId = $clientId;
+
+        return $this;
+    }
+
+    /**
+     * Get clientId
+     *
+     * @return integer 
+     */
+    public function getClientId()
+    {
+        return $this->clientId;
+    }
+
+    /**
+     * Set amountHt
+     *
+     * @param string $amountHt
+     * @return Devis
+     */
+    public function setAmountHt($amountHt)
+    {
+        $this->amountHt = $amountHt;
+
+        return $this;
+    }
+
+    /**
+     * Get amountHt
+     *
+     * @return string 
+     */
+    public function getAmountHt()
+    {
+        return $this->amountHt;
+    }
+
+    /**
+     * Set amountTtc
+     *
+     * @param string $amountTtc
+     * @return Devis
+     */
+    public function setAmountTtc($amountTtc)
+    {
+        $this->amountTtc = $amountTtc;
+
+        return $this;
+    }
+
+    /**
+     * Get amountTtc
+     *
+     * @return string 
+     */
+    public function getAmountTtc()
+    {
+        return $this->amountTtc;
+    }
+
+
+    /**
+     * Set regulationProvided
+     *
+     * @param string $regulationProvided
+     * @return Devis
+     */
+    public function setRegulationProvided($regulationProvided)
+    {
+        $this->regulationProvided = $regulationProvided;
+
+        return $this;
+    }
+
+    /**
+     * Get regulationProvided
+     *
+     * @return string 
+     */
+    public function getRegulationProvided()
+    {
+        return $this->regulationProvided;
+    }
+
+    /**
+     * Set deliveryTime
+     *
+     * @param integer $deliveryTime
+     * @return Devis
+     */
+    public function setDeliveryTime($deliveryTime)
+    {
+        $this->deliveryTime = $deliveryTime;
+
+        return $this;
+    }
+
+    /**
+     * Get deliveryTime
+     *
+     * @return integer 
+     */
+    public function getDeliveryTime()
+    {
+        return $this->deliveryTime;
+    }
+
+    /**
+     * Set deliveryTimeUnit
+     *
+     * @param string $deliveryTimeUnit
+     * @return Devis
+     */
+    public function setDeliveryTimeUnit($deliveryTimeUnit)
+    {
+        $this->deliveryTimeUnit = $deliveryTimeUnit;
+
+        return $this;
+    }
+
+    /**
+     * Get deliveryTimeUnit
+     *
+     * @return string 
+     */
+    public function getDeliveryTimeUnit()
+    {
+        return $this->deliveryTimeUnit;
+    }
+
+    /**
+     * Set methodPaymentId
+     *
+     * @param \Karudev\AppsBundle\Entity\methodpayment $methodPaymentId
+     * @return Devis
+     */
+    public function setMethodPaymentId(\Karudev\AppsBundle\Entity\methodpayment $methodPaymentId = null)
+    {
+        $this->methodPaymentId = $methodPaymentId;
+
+        return $this;
+    }
+
+    /**
+     * Get methodPaymentId
+     *
+     * @return \Karudev\AppsBundle\Entity\methodpayment 
+     */
+    public function getMethodPaymentId()
+    {
+        return $this->methodPaymentId;
+    }
+}

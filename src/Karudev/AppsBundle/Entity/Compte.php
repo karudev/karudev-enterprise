@@ -83,6 +83,13 @@ class Compte implements UserInterface
     
 	
 
+    public function __toString() {
+        $contact = $this->getIdContact();
+        if($this->getIdContact() !== null)
+            return $contact->getNomComplet();
+        else
+            return '';
+    }
     
 	/**
      * @inheritDoc

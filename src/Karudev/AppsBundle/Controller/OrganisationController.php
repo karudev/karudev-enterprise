@@ -23,7 +23,7 @@ class OrganisationController extends Controller
     	
     	if($request->getMethod() == 'POST')
     	{
-    		$form->bindRequest($request);
+    		$form->handleRequest($request);
     		$em = $this->getDoctrine()->getManager();
     		$organisation->setIdOwner($user->getId());
     		$organisation->setIdModifier($user->getId());

@@ -1,7 +1,7 @@
 {% extends "::base.html.twig" %}
 {% block header %}
 <h1>Des informations supplémentaires ?</h1>
-<p>Contactez moi via le formulaire de contact ou suiver moi sur <a target="_blank" href="http://twitter.com/karudev">@karudev</a></p>
+<p>Contactez moi via le formulaire de contact ou suivez moi sur <a target="_blank" href="http://twitter.com/karudev">@karudev</a></p>
 {% endblock %}
 {% block body %}
 	<section style="margin-right : 100px" >
@@ -60,14 +60,7 @@
 	{% endif%}
 	
 	</section>
-	<section>
-	<figure style="float:left;margin:0;margin-top:20px" ><a  target="_blank" href="http://twitter.com/karudev" ><img  width="100px" src="{{ asset('bundles/karudevsite/images/logos/karudev_mini.png') }} "></a></figure> 
-	<figure style="float:left"><img  width="100px" src="{{ asset('bundles/karudevsite/images/logos/twitter.jpeg') }} "></figure> 
-	<article>
-	{{twits|raw}}
-	</article>
-
-	</section>
+	
 
 {% endblock %}
 

@@ -20,6 +20,7 @@ class DefaultController extends Controller
         'classe_profil' => '',
         'classe_disponibilite' => '',
         'classe_contact' => '',
+        'classe_demo' => '',
         'classe_devis' => '',
         'classe_espace_client' => '');
     }
@@ -37,6 +38,7 @@ class DefaultController extends Controller
         'classe_disponibilite' => '',
         'classe_contact' => '',
         'classe_devis' => '',
+            'classe_demo' => '',
         'classe_espace_client' => '');
     }
     
@@ -53,6 +55,7 @@ class DefaultController extends Controller
         'classe_disponibilite' => 'active',
         'classe_contact' => '',
         'classe_devis' => '',
+             'classe_demo' => '',
         'classe_espace_client' => '');
     }
     
@@ -62,11 +65,11 @@ class DefaultController extends Controller
      */
     public function contactAction()
     {
-		   /* Nom d'utilisateur sur Twitter */
+	/*	
 		$user = "karudev";
-		/* Nombre de message à afficher */
+		
 		$count = 15;
-		/* Format de la date à afficher */
+		
 		$date_format = 'd M Y, H:i:s';
 		// inclure les RT
 		//$url = 'https://api.twitter.com/1/statuses/user_timeline.json?include_entities=true&include_rts=true&screen_name='.$user.'&count='.$count;
@@ -93,7 +96,7 @@ class DefaultController extends Controller
 		
 		$html .= '</ul>';
 
-	//die($html);
+	//die($html);*/
     	$request = $this->getRequest();
 		$data = $request->request->get('contact');
 		$email = null;
@@ -120,13 +123,14 @@ class DefaultController extends Controller
 			 
 		}
 		return array( 
-		'twits'=>$html,
+		
 		'email'=>$email,
         'classe_home' => '',
         'classe_profil' => '',
         'classe_disponibilite' => '',
         'classe_contact' => 'active',
         'classe_devis' => '',
+                     'classe_demo' => '',
         'classe_espace_client' => '');
        
     }

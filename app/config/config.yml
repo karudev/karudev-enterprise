@@ -64,3 +64,10 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
     spool:     { type: memory }
+
+
+services:
+    karudev.twig.karudev_extension:
+        class: Karudev\AppsBundle\Twig\KarudevExtension
+        tags:
+            - { name: twig.extension }

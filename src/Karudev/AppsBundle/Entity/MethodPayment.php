@@ -29,6 +29,9 @@ class MethodPayment
     private $libelle;
 
 
+    public function __toString() {
+        return $this->libelle;
+    }
     /**
      * Get methodpayment_id
      *

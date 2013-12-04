@@ -54,9 +54,10 @@
 	 	<div class="nav-collapse collapse">
             <ul class="nav">
               <li class="{{classe_home}}"><a href="{{ path('_home') }}"><i class="icon-home"></i> Home</a></li>
-              <li class="{{classe_profil}}"><a href="{{ path('_profil') }}">Mon Profil</a></li>
-               <li class="{{classe_disponibilite}}"><a href="{{ path('_disponibilite') }}">Disponibilité</a></li>
+            {#  <li class="{{classe_profil}}"><a href="{{ path('_profil') }}">Mon Profil</a></li>
+               <li class="{{classe_disponibilite}}"><a href="{{ path('_disponibilite') }}">Disponibilité</a></li>#}
                <!--<li class="{{classe_devis}}"><a href="#contact">Devis</a></li>-->
+                <li class="{{classe_demo}}"><a href="{{ path('_demo') }}">Démos</a></li>
                 <li class="{{classe_contact}}"><a href="{{ path('_contact') }}">Contact</a></li>
                  <li class=""><a href="{{ path('_apps_enterprise_login') }}"><i class="icon-folder-open"></i> <b><u>Karudev Enterprise</u></b></a></li>
                 <!-- <li class="{{classe_espace_client}}"><a class="espace_client"  href="#contact">Espace client</a></li>-->
@@ -97,10 +98,10 @@
     </div> <!-- /container -->
 	{% block footer %}
 <footer>
-<p>©2009 - 2013 <a href="http://karudev.fr">Karudev.fr</a> , Tous droits réservés | <a href="{{ path('_contact') }}">Contact</a> </p>
+<p>©2009 - {{'now'|date('Y')}} <a href="http://karudev.fr">Karudev.fr</a> , Tous droits réservés | <a href="{{ path('_contact') }}">Contact</a> </p>
 
-<p>Consultant Développeur Web
-- Siret : 517 620 977 00010 - Naf : 62.01Z
+<p>Consultant Développeur Web PHP/JS
+- Siret : 517 620 977 00028 - Naf : 62.01Z
 </p>
 <p>Paris et Dom-Tom</p>
 </footer>
