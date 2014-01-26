@@ -59,7 +59,7 @@
                <!--<li class="{{classe_devis}}"><a href="#contact">Devis</a></li>-->
                 <!-- <li class="{{classe_demo}}"><a href="{{ path('_demo') }}">Démos</a></li>-->
                 <li class="{{classe_contact}}"><a href="{{ path('_contact') }}">Contact</a></li>
-                 <li class=""><a href="{{ path('_apps_enterprise_login') }}"><i class="icon-folder-open"></i> <b><u>Karudev Enterprise</u></b></a></li>
+                {# <li class=""><a href="{{ path('_apps_enterprise_login') }}"><i class="icon-folder-open"></i> <b><u>Karudev Enterprise</u></b></a></li>#}
                 <!-- <li class="{{classe_espace_client}}"><a class="espace_client"  href="#contact">Espace client</a></li>-->
             </ul>
           </div><!--/.nav-collapse -->
@@ -98,12 +98,12 @@
     </div> <!-- /container -->
 	{% block footer %}
 <footer>
-<p>©2009 - {{'now'|date('Y')}} <a href="http://karudev.fr">Karudev.fr</a> , Tous droits réservés | <a href="{{ path('_contact') }}">Contact</a> </p>
+<p>© 2009 - {{'now'|date('Y')}} <a href="http://karudev.fr">Karudev.fr</a> | Mentions légales | <a href="{{ path('_contact') }}">Contact</a> </p>
 
-<p>Consultant Développeur Web PHP/JS
-- Siret : 517 620 977 00028 - Naf : 62.01Z
+<p style="margin-top: 20px">EURL KARUDEV INFORMATIQUE
+- Siret : 517 620 977 00028 - Naf : 62.02A
 </p>
-<p>Paris et Dom-Tom</p>
+<p>Paris - Seine et marne - Haute Seine - Val de Marne - Seine-Saint-Denis - Dom-Tom</p>
 </footer>
      {% endblock %}
     <!-- Le javascript

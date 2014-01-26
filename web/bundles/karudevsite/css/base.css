@@ -60,7 +60,9 @@
         url('myfont.ttf') format('truetype');  /* Saf3+,Chrome,Opera10+ */
 }
   
-
+p{
+    line-height: 1.3em;
+}
 
 
 /* 
